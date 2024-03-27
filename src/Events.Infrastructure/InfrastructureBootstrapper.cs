@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Common.Infrastructure;
 
 namespace Events.Infrastructure
 {
@@ -15,7 +16,7 @@ namespace Events.Infrastructure
         /// <returns>A task that represents the asynchronous operation.</returns>
         public static async Task ConfigureInfrastructureAsync(this WebApplicationBuilder aWebApplicationBuilder)
         {
-            //await aWebApplicationBuilder.ConfigureCommonInfrastructureAsync();
+            await aWebApplicationBuilder.ConfigureCommonInfrastructureAsync();
 
             //await aWebApplicationBuilder.Services.AddPostgreSQL<MembersDbContext>("MembersDb");
             //aWebApplicationBuilder.Services.AddScoped<IRoleRepository, RoleRepository>();
@@ -49,7 +50,7 @@ namespace Events.Infrastructure
         /// <returns>A task that represents the asynchronous operation.</returns>
         public static async Task UseInfrastructure(this WebApplication aWebApplication)
         {
-            //aWebApplication.UseCommonInfrastructure();
+            aWebApplication.UseCommonInfrastructure();
             //await aWebApplication.UseMigrations<MembersDbContext>();
         }
 

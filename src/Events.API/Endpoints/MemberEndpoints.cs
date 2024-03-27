@@ -19,13 +19,10 @@ namespace Events.API.Endpoints
         /// <inheritdoc/>
         public void DefineEndpoints(WebApplication aWebApplication)
         {
-            aWebApplication.MapGet(MembersApiRoutes.members_list, Get_MembersList)
-                .RequirePermissions(PermissionsEnum.AccessMembers)
-                .SetResponseMetadata<PaginatedMemberListDTO[]>(200)
+            aWebApplication.MapPost(EventsApiRoutes.events_new, Post_CreateEvent)
+                .RequirePermissions(PermissionsEnum.CreateEvents)
+                .SetResponseMetadata<string>(200)
                 .ProducesValidationProblem();
-
-            //aWebApplication.MapGet(MembersApiRoutes.members_count, Get_MembersCount)
-            //    .SetResponseMetadata<int>(200);
         }
 
         /// <inheritdoc/>
@@ -34,26 +31,13 @@ namespace Events.API.Endpoints
         }
 
         /// <summary>
-        /// Get the list of guild members(<see cref="PaginatedMemberListDTO"/>) under filtering and pagination conditions specified in the request's query parameters and sorted by a given column name.
+        /// Creates a new event
         /// </summary>
-        private async Task<IResult> Get_MembersList(IMembersService aMembersService, PaginationValidator aPaginationValidator, MembersSortByValidator aSortByValidator,
-            string? discordNameFilter, string? gameHandleFilter, ulong? roleIdFilter, bool? isVerifiedFilter,
-            int page = 1, int pageSize = 20, string sortBy = nameof(MemberDTO.Type),
-            CancellationToken aCancellationToken = default)
+        private async Task<IResult> Post_CreateEvent(CancellationToken aCancellationToken = default)
         =>
-        await Result.CancellationTokenResult(aCancellationToken)
-        .ValidateMany(
-            aPaginationValidator.Validate(new PaginationValParams(page, pageSize)),
-            aSortByValidator.Validate(sortBy))
-        .Bind(_ => aMembersService.GetMemberList(page, pageSize, sortBy, aCancellationToken))
-        .ToIResult();
+        await Task.FromResult(Result.CancellationTokenResult(aCancellationToken)
+        .Map(_ => "Hello")
+        .ToIResult());
 
-        ///// <summary>
-        ///// Get the count of all the guild's members registered in the database.
-        ///// </summary>
-        //private async Task<IResult> Get_MembersCount(IMembersService aMembersService, CancellationToken aCancellationToken = default)
-        //=> await Result.CancellationTokenResult(aCancellationToken)
-        //    .Bind(_ => aMembersService.GetMembersCount())
-        //    .ToIResult();
     }
 }

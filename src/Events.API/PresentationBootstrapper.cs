@@ -22,11 +22,11 @@ namespace Events.API
             var lXmlDocFileName = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
             var lXmlDocFilePath = Path.Combine(AppContext.BaseDirectory, lXmlDocFileName);
 
-            //aWebApplicationBuilder.ConfigureDefaultPresentation(
-            //    new List<string> { lXmlDocFilePath },
-            //    aBaseSwaggerPath: "members-ms",
-            //    aScanMarkerList: typeof(PresentationErrors)
-            //);
+            aWebApplicationBuilder.ConfigureDefaultPresentation(
+                new List<string> { lXmlDocFilePath },
+                aBaseSwaggerPath: "events-ms",
+                aScanMarkerList: typeof(PresentationErrors)
+            );
             //aWebApplicationBuilder.Services.AddValidatorsFromAssemblyContaining<MembersSortByValidator>();
             //aWebApplicationBuilder.Services.AddValidatorsFromAssemblyContaining<RolesSortByValidator>();
 

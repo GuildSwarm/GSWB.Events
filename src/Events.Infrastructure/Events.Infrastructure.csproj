@@ -39,7 +39,6 @@
     <Folder Include="Communication\MessageProducers\" />
     <Folder Include="Communication\MessageConsumers\" />
     <Folder Include="Errors\Exceptions\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
