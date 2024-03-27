@@ -1,0 +1,1495 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Infrastructure\\Events.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\Events.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\Events.Application.csproj",
+        "projectName": "Events.Application",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\Events.Application.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj",
+        "projectName": "Events.Domain",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Infrastructure\\Events.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Infrastructure\\Events.Infrastructure.csproj",
+        "projectName": "Events.Infrastructure",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Infrastructure\\Events.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\Events.Application.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Application\\Events.Application.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\Events\\src\\CA_DDD_MS_Template.Domain\\Events.Domain.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\Common.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\Common.Infrastructure.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\TGF.Common.Extensions.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\TGF.Common.Extensions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj",
+        "projectName": "Common.Application",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj",
+        "projectName": "Common.Domain",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\Common.Domain.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\Common.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\Common.Infrastructure.csproj",
+        "projectName": "Common.Infrastructure",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\Common.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\GSWB.Common\\src\\Common.Application\\Common.Application.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\TGF.CA.Infrastructure.DB.PostgreSQL.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\TGF.CA.Infrastructure.DB.PostgreSQL.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\TGF.CA.Infrastructure.Identity.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\TGF.CA.Infrastructure.Identity.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\TGF.CA.Infrastructure.Secrets.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\TGF.CA.Infrastructure.Secrets.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj",
+        "projectName": "TGF.CA.Application",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj",
+        "projectName": "TGF.CA.Domain",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\TGF.CA.Domain.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Domain\\TGF.CA.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj",
+        "projectName": "TGF.CA.Infrastructure.Comm.RabbitMQ",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm.RabbitMQ\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\TGF.Common.Serialization.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\TGF.Common.Serialization.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.Rabbitmq": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            },
+            "Scrutor": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj",
+        "projectName": "TGF.CA.Infrastructure.Comm",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\TGF.CA.Infrastructure.Comm.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Comm\\TGF.CA.Infrastructure.Comm\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\TGF.CA.Infrastructure.DB.PostgreSQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\TGF.CA.Infrastructure.DB.PostgreSQL.csproj",
+        "projectName": "TGF.CA.Infrastructure.DB.PostgreSQL",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\TGF.CA.Infrastructure.DB.PostgreSQL.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB.PostgreSQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\TGF.CA.Infrastructure.DB.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\TGF.CA.Infrastructure.DB.csproj"
+              },
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.NpgSql": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\TGF.CA.Infrastructure.DB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\TGF.CA.Infrastructure.DB.csproj",
+        "projectName": "TGF.CA.Infrastructure.DB",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\TGF.CA.Infrastructure.DB.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Persistence\\DB\\TGF.CA.Infrastructure.DB\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\TGF.CA.Infrastructure.Identity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\TGF.CA.Infrastructure.Identity.csproj",
+        "projectName": "TGF.CA.Infrastructure.Identity",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\TGF.CA.Infrastructure.Identity.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Identity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\TGF.CA.Infrastructure.Secrets.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\TGF.CA.Infrastructure.Secrets.csproj",
+        "projectName": "TGF.CA.Infrastructure.Secrets",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\TGF.CA.Infrastructure.Secrets.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\Security\\TGF.CA.Infrastructure.Secrets\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "VaultSharp": {
+              "target": "Package",
+              "version": "[1.13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj",
+        "projectName": "TGF.CA.Infrastructure.Discovery",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\TGF.CA.Infrastructure.Discovery.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure.Discovery\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.Consul": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Consul": {
+              "target": "Package",
+              "version": "[1.7.14.2, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj",
+        "projectName": "TGF.CA.Infrastructure",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\TGF.CA.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Infrastructure\\TGF.CA.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj": {
+                "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\CleanArchitecture\\Application\\TGF.CA.Application\\TGF.CA.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\TGF.Common.Extensions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\TGF.Common.Extensions.csproj",
+        "projectName": "TGF.Common.Extensions",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\TGF.Common.Extensions.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Extensions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Utf8Json": {
+              "target": "Package",
+              "version": "[1.3.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj",
+        "projectName": "TGF.Common.ROP",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\TGF.Common.ROP.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.ROP\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Utf8Json": {
+              "target": "Package",
+              "version": "[1.3.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\TGF.Common.Serialization.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\TGF.Common.Serialization.csproj",
+        "projectName": "TGF.Common.Serialization",
+        "projectPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\TGF.Common.Serialization.csproj",
+        "packagesPath": "C:\\Users\\edyll\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edyll\\source\\GSWI.Development\\TheGoodFramework\\src\\Common\\TGF.Common.Serialization\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\edyll\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <DockerBuild>false</DockerBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--ESSENTIAL TO ADD MIGRATIONS AT DESIGN TIME-->
+    <PackageReference Include="AngleSharp" Version="1.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <TreatAsUsed>true</TreatAsUsed>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DockerBuild)'=='false'">
+    <ProjectReference Include="..\CA_DDD_MS_Template.Application\Events.Application.csproj" />
+    <ProjectReference Include="..\CA_DDD_MS_Template.Domain\Events.Domain.csproj" />
+    <ProjectReference Include="..\..\..\TheGoodFramework\src\CleanArchitecture\Infrastructure\Comm\TGF.CA.Infrastructure.Comm.RabbitMQ\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\TheGoodFramework\src\Common\TGF.Common.Extensions\TGF.Common.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\GSWB.Common\src\Common.Infrastructure\Common.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DockerBuild)'=='true'">
+    <ProjectReference Include="../CA_DDD_MS_Template.Application/CA_DDD_MS_Template.Application.csproj" />
+    <ProjectReference Include="../CA_DDD_MS_Template.Domain/CA_DDD_MS_Template.Domain.csproj" />
+    <PackageReference Include="TGF.CA.Infrastructure.Comm.RabbitMQ" Version="1.0.0" />
+    <PackageReference Include="TGF.Common.Extensions" Version="1.0.0" />
+    <PackageReference Include="Common.Infrastructure" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Communication\HTTP\" />
+    <Folder Include="Communication\Messages\" />
+    <Folder Include="Communication\MessageProducers\" />
+    <Folder Include="Communication\MessageConsumers\" />
+    <Folder Include="Errors\Exceptions\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
