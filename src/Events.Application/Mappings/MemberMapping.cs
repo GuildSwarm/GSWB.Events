@@ -8,7 +8,7 @@ namespace Events.Application.Mappings
 {
     public static class MemberMapping
     {
-        public static MemberDTO ToDto(this Member aMember)
-        => new ($"{aMember.Name}, aka {aMember.Nickname}",aMember.Type);
+        //public static MemberDTO ToDto(this Member aMember)
+        //=> new ($"{aMember.Name}, aka {aMember.Nickname}",aMember.Type);
     }
 }

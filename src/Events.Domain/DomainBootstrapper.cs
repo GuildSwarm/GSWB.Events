@@ -15,7 +15,7 @@ namespace Events.Domain
         /// <param name="aServiceList"></param>
         public static void RegisterDomainServices(this IServiceCollection aServiceList)
         {
-            aServiceList.AddScoped<IMembersDomainService, MembersDomainService>();
+            //aServiceList.AddScoped<IMembersDomainService, MembersDomainService>();
         }
     }
 }
