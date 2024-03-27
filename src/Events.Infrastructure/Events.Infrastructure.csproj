@@ -18,16 +18,16 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(DockerBuild)'=='false'">
-    <ProjectReference Include="..\CA_DDD_MS_Template.Application\Events.Application.csproj" />
-    <ProjectReference Include="..\CA_DDD_MS_Template.Domain\Events.Domain.csproj" />
+    <ProjectReference Include="..\Events.Application\Events.Application.csproj" />
+    <ProjectReference Include="..\Events.Domain\Events.Domain.csproj" />
     <ProjectReference Include="..\..\..\TheGoodFramework\src\CleanArchitecture\Infrastructure\Comm\TGF.CA.Infrastructure.Comm.RabbitMQ\TGF.CA.Infrastructure.Comm.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\TheGoodFramework\src\Common\TGF.Common.Extensions\TGF.Common.Extensions.csproj" />
     <ProjectReference Include="..\..\..\GSWB.Common\src\Common.Infrastructure\Common.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(DockerBuild)'=='true'">
-    <ProjectReference Include="../CA_DDD_MS_Template.Application/CA_DDD_MS_Template.Application.csproj" />
-    <ProjectReference Include="../CA_DDD_MS_Template.Domain/CA_DDD_MS_Template.Domain.csproj" />
+    <ProjectReference Include="../Events.Application/Events.Application.csproj" />
+    <ProjectReference Include="../Events.Domain/Events.Domain.csproj" />
     <PackageReference Include="TGF.CA.Infrastructure.Comm.RabbitMQ" Version="1.0.0" />
     <PackageReference Include="TGF.Common.Extensions" Version="1.0.0" />
     <PackageReference Include="Common.Infrastructure" Version="1.0.0" />

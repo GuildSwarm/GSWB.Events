@@ -12,12 +12,12 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(DockerBuild)'=='false'">
-    <ProjectReference Include="..\CA_DDD_MS_Template.Domain\Events.Domain.csproj" />
+    <ProjectReference Include="..\Events.Domain\Events.Domain.csproj" />
     <ProjectReference Include="..\..\..\GSWB.Common\src\Common.Application\Common.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(DockerBuild)'=='true'">
-    <ProjectReference Include="../CA_DDD_MS_Template.Domain/CA_DDD_MS_Template.Domain.csproj" />
+    <ProjectReference Include="../Events.Domain/Events.Domain.csproj" />
     <PackageReference Include="Common.Application" Version="1.0.0" />
   </ItemGroup>
 
