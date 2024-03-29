@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Events.Application.Contracts.Services;
+using Events.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Events.Application
 {
@@ -13,8 +15,7 @@ namespace Events.Application
         /// <param name="aServiceList"></param>
         public static void RegisterApplicationServices(this IServiceCollection aServiceList)
         {
-            //aServiceList.AddScoped<IRolesService, RolesService>();
-            //aServiceList.AddScoped<IMembersService, MembersService>();
+            aServiceList.AddScoped<IEventsService, EventsService>();
         }
     }
 }

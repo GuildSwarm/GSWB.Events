@@ -1,5 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Common.Infrastructure;
+using Events.Infrastructure.DataAccess.DbContexts;
+using TGF.CA.Infrastructure.DB.PostgreSQL;
+using Events.Application.Contracts.Repositories;
+using Events.Infrastructure.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using TGF.CA.Infrastructure;
 
 namespace Events.Infrastructure
 {
@@ -18,8 +24,8 @@ namespace Events.Infrastructure
         {
             await aWebApplicationBuilder.ConfigureCommonInfrastructureAsync();
 
-            //await aWebApplicationBuilder.Services.AddPostgreSQL<MembersDbContext>("MembersDb");
-            //aWebApplicationBuilder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            await aWebApplicationBuilder.Services.AddPostgreSQL<EventsDbContext>("EventsDb");
+            aWebApplicationBuilder.Services.AddScoped<IEventRepository, EventRespository>();
             //aWebApplicationBuilder.Services.AddScoped<IMemberRepository, MemberRepository>();
             //aWebApplicationBuilder.Services.AddHostedService<StartupHostedService>();
 
@@ -51,7 +57,7 @@ namespace Events.Infrastructure
         public static async Task UseInfrastructure(this WebApplication aWebApplication)
         {
             aWebApplication.UseCommonInfrastructure();
-            //await aWebApplication.UseMigrations<MembersDbContext>();
+            await aWebApplication.UseMigrations<EventsDbContext>();
         }
 
     }

@@ -31,8 +31,8 @@
     <Position X="26.25" Y="30" Width="2.25" />
     <AssociationLine Name="Parent" Type="Events.Domain.Entities.DiscordEventChannel" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="28.5" Y="30.25" />
-        <Point X="28.875" Y="30.25" />
+        <Point X="28.5" Y="30.272" />
+        <Point X="28.875" Y="30.272" />
         <Point X="28.875" Y="29.625" />
         <Point X="28.25" Y="29.625" />
         <Point X="28.25" Y="30" />
@@ -50,8 +50,8 @@
     <Position X="18" Y="30" Width="2.25" />
     <AssociationLine Name="Parent" Type="Events.Domain.Entities.DiscordEventChannelTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="20.25" Y="30.25" />
-        <Point X="20.625" Y="30.25" />
+        <Point X="20.25" Y="30.272" />
+        <Point X="20.625" Y="30.272" />
         <Point X="20.625" Y="29.625" />
         <Point X="20" Y="29.625" />
         <Point X="20" Y="30" />
@@ -69,8 +69,8 @@
     <Position X="37.25" Y="27.25" Width="2.25" />
     <AssociationLine Name="Sender" Type="Events.Domain.Entities.ActivityParticipation" FixedToPoint="true">
       <Path>
-        <Point X="37.25" Y="28.25" />
-        <Point X="35.25" Y="28.25" />
+        <Point X="37.25" Y="28.337" />
+        <Point X="35.25" Y="28.337" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -86,15 +86,15 @@
     <Position X="26" Y="22.25" Width="2.25" />
     <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannel" FixedToPoint="true">
       <Path>
-        <Point X="26.75" Y="24.507" />
+        <Point X="26.75" Y="24.637" />
         <Point X="26.75" Y="30" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="26" Y="23.312" />
-        <Point X="23.125" Y="23.312" />
-        <Point X="23.125" Y="21.296" />
+        <Point X="26" Y="23.373" />
+        <Point X="23.125" Y="23.373" />
+        <Point X="23.125" Y="21.425" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-2.066" Y="0.06" />
@@ -105,7 +105,7 @@
         <Point X="26.562" Y="22.25" />
         <Point X="26.562" Y="17.931" />
         <Point X="23.562" Y="17.931" />
-        <Point X="23.562" Y="15.988" />
+        <Point X="23.562" Y="16.117" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-3.294" Y="0.211" />
@@ -128,8 +128,8 @@
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="29.938" Y="24.5" />
-        <Point X="29.938" Y="23.562" />
-        <Point X="28.25" Y="23.562" />
+        <Point X="29.938" Y="23.638" />
+        <Point X="28.25" Y="23.638" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.125" Y="-0.29" />
@@ -148,7 +148,7 @@
     <Position X="27.25" Y="17.75" Width="2.25" />
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true">
       <Path>
-        <Point X="27.688" Y="19.046" />
+        <Point X="27.688" Y="19.175" />
         <Point X="27.688" Y="22.25" />
       </Path>
     </AssociationLine>
@@ -164,9 +164,9 @@
     <Position X="31.5" Y="22.25" Width="2.25" />
     <AssociationLine Name="EventRole" Type="Events.Domain.Entities.EventRole" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="31.5" Y="22.812" />
-        <Point X="29.875" Y="22.812" />
-        <Point X="29.875" Y="21.488" />
+        <Point X="31.5" Y="22.856" />
+        <Point X="29.875" Y="22.856" />
+        <Point X="29.875" Y="21.617" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
         <Position X="-1.121" Y="0.071" Height="0.182" Width="1.013" />
@@ -174,10 +174,10 @@
     </AssociationLine>
     <AssociationLine Name="Channel" Type="Events.Domain.Entities.DiscordEventChannel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="33.75" Y="22.75" />
-        <Point X="40.894" Y="22.75" />
-        <Point X="40.894" Y="30.75" />
-        <Point X="28.5" Y="30.75" />
+        <Point X="33.75" Y="22.788" />
+        <Point X="40.894" Y="22.788" />
+        <Point X="40.894" Y="30.815" />
+        <Point X="28.5" Y="30.815" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -193,21 +193,21 @@
     <Position X="21.75" Y="14.5" Width="3.25" />
     <AssociationLine Name="EventRoles" Type="Events.Domain.Entities.EventRole" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="25" Y="15.5" />
-        <Point X="30.438" Y="15.5" />
+        <Point X="25" Y="15.587" />
+        <Point X="30.438" Y="15.587" />
         <Point X="30.438" Y="20" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="EventRoleTemplates" Type="Events.Domain.Entities.EventRoleTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="25" Y="14.75" />
-        <Point X="35.25" Y="14.75" />
+        <Point X="25" Y="14.772" />
+        <Point X="35.25" Y="14.772" />
         <Point X="35.25" Y="20" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Events" Type="Events.Domain.Entities.Event" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="23.438" Y="15.988" />
+        <Point X="23.438" Y="16.117" />
         <Point X="23.438" Y="18.043" />
         <Point X="26.438" Y="18.043" />
         <Point X="26.438" Y="22.25" />
@@ -218,10 +218,10 @@
     </AssociationLine>
     <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="21.75" Y="15.125" />
-        <Point X="14.805" Y="15.125" />
-        <Point X="14.805" Y="24.688" />
-        <Point X="18" Y="24.688" />
+        <Point X="21.75" Y="15.179" />
+        <Point X="14.805" Y="15.179" />
+        <Point X="14.805" Y="24.702" />
+        <Point X="18" Y="24.702" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.041" Y="0.119" />
@@ -242,16 +242,16 @@
     <Position X="28.75" Y="20" Width="2" />
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="29.5" Y="21.488" />
-        <Point X="29.5" Y="22.812" />
-        <Point X="28.25" Y="22.812" />
+        <Point X="29.5" Y="21.617" />
+        <Point X="29.5" Y="22.845" />
+        <Point X="28.25" Y="22.845" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="EventRequirements" Type="Events.Domain.Entities.EventRequirement" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="30.562" Y="20" />
-        <Point X="30.562" Y="15.375" />
-        <Point X="25" Y="15.375" />
+        <Point X="30.562" Y="15.451" />
+        <Point X="25" Y="15.451" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -270,18 +270,18 @@
     <AssociationLine Name="EventRequirements" Type="Events.Domain.Entities.EventRequirement" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="35.375" Y="20" />
-        <Point X="35.375" Y="14.625" />
-        <Point X="25" Y="14.625" />
+        <Point X="35.375" Y="14.636" />
+        <Point X="25" Y="14.636" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="EventTemplate" Type="Events.Domain.Entities.EventTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="36.5" Y="20.5" />
-        <Point X="40.545" Y="20.5" />
+        <Point X="36.5" Y="20.543" />
+        <Point X="40.545" Y="20.543" />
         <Point X="40.545" Y="12.997" />
         <Point X="14.082" Y="12.997" />
-        <Point X="14.082" Y="25.75" />
-        <Point X="18" Y="25.75" />
+        <Point X="14.082" Y="25.846" />
+        <Point X="18" Y="25.846" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -297,9 +297,9 @@
     <Position X="21.75" Y="20" Width="2" />
     <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="22.25" Y="21.296" />
-        <Point X="22.25" Y="25.062" />
-        <Point X="20.75" Y="25.062" />
+        <Point X="22.25" Y="21.425" />
+        <Point X="22.25" Y="25.106" />
+        <Point X="20.75" Y="25.106" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.054" Y="-0.288" />
@@ -307,9 +307,9 @@
     </AssociationLine>
     <AssociationLine Name="Events" Type="Events.Domain.Entities.Event" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="23" Y="21.296" />
-        <Point X="23" Y="23.438" />
-        <Point X="26" Y="23.438" />
+        <Point X="23" Y="21.425" />
+        <Point X="23" Y="23.506" />
+        <Point X="26" Y="23.506" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.026" Y="-0.327" />
@@ -328,25 +328,25 @@
     <Position X="18" Y="24.5" Width="2.75" />
     <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannelTemplate" FixedToPoint="true">
       <Path>
-        <Point X="18.625" Y="26.18" />
+        <Point X="18.625" Y="26.31" />
         <Point X="18.625" Y="30" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="20.75" Y="24.938" />
-        <Point X="22.125" Y="24.938" />
-        <Point X="22.125" Y="21.296" />
+        <Point X="20.75" Y="24.971" />
+        <Point X="22.125" Y="24.971" />
+        <Point X="22.125" Y="21.425" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="EventRoleTemplates" Type="Events.Domain.Entities.EventRoleTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="18" Y="25.875" />
-        <Point X="13.948" Y="25.875" />
+        <Point X="18" Y="25.981" />
+        <Point X="13.948" Y="25.981" />
         <Point X="13.948" Y="12.79" />
         <Point X="40.67" Y="12.79" />
-        <Point X="40.67" Y="20.625" />
-        <Point X="36.5" Y="20.625" />
+        <Point X="40.67" Y="20.679" />
+        <Point X="36.5" Y="20.679" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.05" Y="-0.317" />
@@ -354,10 +354,10 @@
     </AssociationLine>
     <AssociationLine Name="EventRequirements" Type="Events.Domain.Entities.EventRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="18" Y="24.812" />
-        <Point X="14.677" Y="24.812" />
-        <Point X="14.677" Y="15" />
-        <Point X="21.75" Y="15" />
+        <Point X="18" Y="24.837" />
+        <Point X="14.677" Y="24.837" />
+        <Point X="14.677" Y="15.043" />
+        <Point X="21.75" Y="15.043" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.044" Y="0.106" />
