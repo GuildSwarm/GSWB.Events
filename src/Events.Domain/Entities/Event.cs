@@ -35,13 +35,12 @@ namespace Events.Domain.Entities
         /// </summary>
         public DateTime EndDate { get; set; }
 
+
         public DiscordEventChannel? DiscordTemplate { get; set; }
-
-
 
         public virtual ICollection<EventTag> Tags { get; set; } = [];
 
-        public virtual ICollection<EventRequirement> EventRequirements { get; set; } = [];
+        public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
 
     }
 }

@@ -40,7 +40,7 @@ namespace Events.Domain.Entities
         /// </summary>
         public virtual ICollection<EventTag> Tags { get; set; } = [];
         public virtual ICollection<EventRoleTemplate> EventRoleTemplates { get; set; } = [];
-        public virtual ICollection<EventRequirement> EventRequirements { get; set; } = [];
+        public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
 
     }
 }
