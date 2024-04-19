@@ -11,7 +11,7 @@ namespace Events.Domain.Entities
     {
         public required string Name { get; set; }
         public string? Description { get; set; }
-        public int MaxSlots { get; set; } = 1; //Defult value should be 1. 
+        public int Slots { get; set; } = 1; //Defult value should be 1. 
 
         public required Event Event { get; set; }
         public ICollection<EventRoster> Rosters { get; set; } = [];

@@ -7,7 +7,7 @@ using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
 {
-    public class EventManagemer : Entity<Guid>
+    public class EventManager : Entity<Guid>
     {
         /// <summary>
         /// Targert event.
@@ -16,10 +16,20 @@ namespace Events.Domain.Entities
         /// <summary>
         /// Manager of the event.
         /// </summary>
-        public required Guid ManagerId { get; set; }
+        public required Guid MemberId { get; set; }
         /// <summary>
         /// Logbook of each manager, managers can read all the Logbooks of the event so they can lave their log of the event for next managers in long events.
         /// </summary>
         public string? Logbook { get; set; }
+
+        internal EventManager(Guid MemberId, Event Event, string? aLogbook = default)
+        {
+            this.MemberId = MemberId;
+            this.Event = Event;
+            Logbook = aLogbook;
+        }
+        internal EventManager()
+        {
+        }
     }
 }

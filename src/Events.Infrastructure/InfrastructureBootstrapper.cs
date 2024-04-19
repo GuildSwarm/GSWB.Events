@@ -6,6 +6,8 @@ using Events.Application.Contracts.Repositories;
 using Events.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using TGF.CA.Infrastructure;
+using Events.Domain.Contracts.Services;
+using Events.Infrastructure.Services;
 
 namespace Events.Infrastructure
 {
@@ -26,7 +28,7 @@ namespace Events.Infrastructure
 
             await aWebApplicationBuilder.Services.AddPostgreSQL<EventsDbContext>("EventsDb");
             aWebApplicationBuilder.Services.AddScoped<IEventRepository, EventRespository>();
-            //aWebApplicationBuilder.Services.AddScoped<IMemberRepository, MemberRepository>();
+            aWebApplicationBuilder.Services.AddScoped<IExternalPermissionsService, ExternalPermissionsService>();
             //aWebApplicationBuilder.Services.AddHostedService<StartupHostedService>();
 
             //aWebApplicationBuilder.Services.AddHttpClient();

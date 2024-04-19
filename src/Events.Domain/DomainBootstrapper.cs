@@ -1,5 +1,6 @@
 ﻿using Events.Domain.Contracts.Services;
-using Events.Domain.Services;
+using Events.Domain.Validation;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Events.Domain
@@ -15,7 +16,7 @@ namespace Events.Domain
         /// <param name="aServiceList"></param>
         public static void RegisterDomainServices(this IServiceCollection aServiceList)
         {
-            //aServiceList.AddScoped<IMembersDomainService, MembersDomainService>();
+            aServiceList.AddValidatorsFromAssemblyContaining<EventManagerValidator>();
         }
     }
 }

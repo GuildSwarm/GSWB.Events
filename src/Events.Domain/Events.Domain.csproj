@@ -16,12 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Contracts\Repositories\" />
     <Folder Include="Entities\BusinessLogic\" />
     <Folder Include="Events\" />
     <Folder Include="Errors\Exceptions\" />
     <Folder Include="ExternalContracts\" />
     <Folder Include="Messages\" />
-    <Folder Include="Aggregates\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

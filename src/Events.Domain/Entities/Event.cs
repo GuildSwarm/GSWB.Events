@@ -7,7 +7,7 @@ using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
 {
-    public class Event : Entity<Guid>
+    public partial class Event : Entity<Guid>
     {
         public ulong DiscordEventId { get; set; }
 
@@ -35,12 +35,7 @@ namespace Events.Domain.Entities
         /// </summary>
         public DateTime EndDate { get; set; }
 
-
-        public DiscordEventChannel? DiscordTemplate { get; set; }
-
-        public virtual ICollection<EventTag> Tags { get; set; } = [];
-
-        public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
+        public virtual ICollection<EventTag> Tags { get; private set; } = [];
 
     }
 }

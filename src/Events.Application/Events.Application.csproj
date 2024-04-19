@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Errors\Exceptions\" />
+    <Folder Include="UseCases\Events\" />
   </ItemGroup>
 
 </Project>

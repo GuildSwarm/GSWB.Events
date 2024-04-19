@@ -13,7 +13,7 @@ namespace Events.Infrastructure.DataAccess.DbContexts
         public virtual DbSet<DynamicTransaction> DynamicTransactions { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<EventActivity> EventActivities { get; set; }
-        public virtual DbSet<EventManagemer> EventManagemers { get; set; }
+        public virtual DbSet<EventManager> EventManagemers { get; set; }
         public virtual DbSet<EventParticipation> EventParticipations { get; set; }
         public virtual DbSet<EventRequirement> EventRequirements { get; set; }
         public virtual DbSet<EventRole> EventRoles { get; set; }
