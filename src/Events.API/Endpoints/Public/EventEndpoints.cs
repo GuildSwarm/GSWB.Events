@@ -11,6 +11,7 @@ using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.Result;
 using TGF.CA.Application.DTOs;
 using Common.Application.DTOs.Events;
+using Events.Application.Contracts.UseCases.Events;
 
 namespace Events.API.Endpoints.Public
 {
@@ -20,12 +21,12 @@ namespace Events.API.Endpoints.Public
         /// <inheritdoc/>
         public void DefineEndpoints(WebApplication aWebApplication)
         {
-            aWebApplication.MapPost(EventsApiRoutes.events_new, Post_CreateEvent)
+            aWebApplication.MapPost(EventsApiRoutes.events, Post_CreateEvent)
                 .RequirePermissions(PermissionsEnum.ManageEvents)
-                .SetResponseMetadata<string>(200)
+                .SetResponseMetadata<EventDTO>(200)
                 .ProducesValidationProblem();
 
-            aWebApplication.MapGet(EventsApiRoutes.events_list, Get_EventList)
+            aWebApplication.MapGet(EventsApiRoutes.events, Get_EventList)
                 .RequirePermissions(PermissionsEnum.AccessEvents)
                 .SetResponseMetadata<PaginatedListDTO<EventDTO>>(200)
                 .ProducesValidationProblem();
@@ -39,11 +40,10 @@ namespace Events.API.Endpoints.Public
         /// <summary>
         /// Creates a new event
         /// </summary>
-        private async Task<IResult> Post_CreateEvent(CreateEventDTO aCreateEventDto, CancellationToken aCancellationToken = default)
-        =>
-        await Task.FromResult(Result.CancellationTokenResult(aCancellationToken)
-        .Map(_ => "Hello")
-        .ToIResult());
+        private async Task<IResult> Post_CreateEvent(CreateEventDTO aCreateEventDto, ICreateEventService aCreateEventService, CancellationToken aCancellationToken = default)
+        => await Result.CancellationTokenResult(aCancellationToken)
+            .Bind(_ => aCreateEventService.CreateEvent(aCreateEventDto, aCancellationToken))
+            .ToIResult();
 
         /// <summary>
         /// Get the list of events(<see cref="PaginatedListDTO{T}"/>) under filtering and pagination conditions specified in the request's query parameters and sorted by a given column name.

@@ -35,7 +35,5 @@ namespace Events.Domain.Entities
         /// </summary>
         public DateTime EndDate { get; set; }
 
-        public virtual ICollection<EventTag> Tags { get; private set; } = [];
-
     }
 }

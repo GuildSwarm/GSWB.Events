@@ -1,5 +1,5 @@
 ﻿using Events.Domain.Entities;
-using TGF.CA.Application.Contracts.Repositories;
+using TGF.CA.Domain.Contracts.Repositories;
 using TGF.Common.ROP.HttpResult;
 
 namespace Events.Application.Contracts.Repositories

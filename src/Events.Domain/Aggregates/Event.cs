@@ -1,6 +1,7 @@
 ﻿using Events.Domain.Contracts.Services;
 using Events.Domain.Validation;
 using Events.Domain.Validation.Event;
+using Events.Domain.Validation.Tag;
 using Microsoft.AspNetCore.SignalR.Protocol;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,7 @@ namespace Events.Domain.Entities
         public DiscordEventChannel? DiscordTemplate { get; private set; }
         public virtual ICollection<EventRequirement> Requirements { get; private set; } = [];
         public virtual ICollection<EventManager> Managers { get; private set; } = [];
-
-        #region Tags
-        public IHttpResult<EventTag> AddTag(EventTag aTag)
-        => Result.SuccessHttp(aTag)
-            .Validate(aTag, new TagValidator())
-            .Tap(Tags.Add)
-            .Validate(this, new AddTagValidator());
-
-        public IHttpResult<EventTag> RemoveTag(EventTag aTag)
-        => Result.SuccessHttp(aTag)
-            .Tap(tag => Tags.Remove(tag));
-        #endregion
+        public virtual ICollection<EventTag> Tags { get; private set; } = [];
 
         #region Managers
         public IHttpResult<IEnumerable<EventManager>> AddManagers(IEnumerable<Guid> aMemberIdList, EventManagerValidator aEventManagerValidator)
@@ -63,6 +53,28 @@ namespace Events.Domain.Entities
             .Tap(managerList => Managers = Managers.Except(managerList).ToList());
         #endregion
 
+        #region Tags
+        public IHttpResult<Event> AddTags(IEnumerable<Guid> aTagIdList, TagIdListValidator aTagIdListValidator)
+        {
+            var lValidationResult = aTagIdListValidator.Validate(aTagIdList);
+
+            if (!lValidationResult.IsValid)
+                return Result.Failure<Event>(lValidationResult.Errors
+                    .Select(e => ValidateSwitchExtensions.GetValidationError(e.ErrorCode, e.ErrorMessage))
+                    .ToImmutableArray());
+
+            aTagIdList.Where(tagId => Tags.Any(eventTag => eventTag.TagId == tagId))
+            .ToList()
+            .ForEach(tagId => Tags.Add(new EventTag() { EventId = this.Id, TagId = tagId }));
+
+            return Result.SuccessHttp(this);
+        }
+
+        public IHttpResult<IEnumerable<EventTag>> DeleteTags(IEnumerable<Guid> aTagIdList)
+        => Result.SuccessHttp(aTagIdList)
+            .Map(tagIdList => Tags.Where(eventTag => tagIdList.Contains(eventTag.TagId)))
+            .Tap(eventTagList => Tags = Tags.Except(eventTagList).ToList());
+        #endregion
 
         // Add a requirement to the event.
         public void AddRequirement(EventRequirement requirement)

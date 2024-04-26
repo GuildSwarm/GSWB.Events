@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace Events.Domain.Validation
+namespace Events.Domain.Validation.Tag
 {
-    public class TagValidator : AbstractValidator<Entities.EventTag>
+    public class TagValidator : AbstractValidator<Entities.Tag>
     {
-        public TagValidator() 
+        public TagValidator()
         {
             RuleFor(tag => tag)
                 .NotNull();

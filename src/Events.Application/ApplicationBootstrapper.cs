@@ -1,8 +1,10 @@
 ﻿using Events.Application.Contracts.Services;
 using Events.Application.Contracts.UseCases;
 using Events.Application.Contracts.UseCases.EventManagers;
+using Events.Application.Contracts.UseCases.Events;
 using Events.Application.UseCases;
 using Events.Application.UseCases.EventManagers;
+using Events.Application.UseCases.Events;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Events.Application
@@ -21,6 +23,7 @@ namespace Events.Application
             aServiceList.AddScoped<IEventsService, EventsService>();
             aServiceList.AddScoped<IAddEventManagersService, AddEventManagersService>();
             aServiceList.AddScoped<IDeleteEventManagersService, DeleteEventManagersService>();
+            aServiceList.AddScoped<ICreateEventService, CreateEventService>();
 
         }
     }

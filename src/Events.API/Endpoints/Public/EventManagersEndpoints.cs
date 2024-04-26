@@ -8,6 +8,7 @@ using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;
 using TGF.CA.Presentation;
 using TGF.CA.Presentation.Middleware;
 using TGF.CA.Presentation.MinimalAPI;
+
 namespace Events.API.Endpoints.Public
 {
     /// <summary>
@@ -18,12 +19,12 @@ namespace Events.API.Endpoints.Public
         /// <inheritdoc/>
         public void DefineEndpoints(WebApplication aWebApplication)
         {
-            aWebApplication.MapPut(EventsApiRoutes.events_addManagers, Post_AddEventManagers)
+            aWebApplication.MapPut(EventsApiRoutes.events_managers, Post_AddEventManagers)
                 .RequirePermissions(PermissionsEnum.ManageEvents)
                 .SetResponseMetadata<EventDTO>(200)
                 .ProducesValidationProblem();
 
-            aWebApplication.MapDelete(EventsApiRoutes.events_deleteManagers, Delete_DeleteEventManagers)
+            aWebApplication.MapDelete(EventsApiRoutes.events_managers, Delete_DeleteEventManagers)
                 .RequirePermissions(PermissionsEnum.ManageEvents)
                 .SetResponseMetadata<EventDTO>(200)
                 .ProducesValidationProblem();
@@ -37,11 +38,11 @@ namespace Events.API.Endpoints.Public
         /// <summary>
         /// Creates a new event
         /// </summary>
-        private async Task<IResult> Post_AddEventManagers(EventManagersDTO aAddEventManagersDTO, [FromServices] AddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Post_AddEventManagers(Guid eventId, EventManagersDTO aAddEventManagersDTO, [FromServices] AddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
         => await aAddEventManagersService.AddManagers(aAddEventManagersDTO, aCancellationToken)
         .ToIResult();
 
-        private async Task<IResult> Delete_DeleteEventManagers(EventManagersDTO aAddEventManagersDTO, [FromServices] DeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Delete_DeleteEventManagers(Guid eventId, [FromBody] EventManagersDTO aAddEventManagersDTO, [FromServices] DeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
         => await aDeleteEventManagersService.DeleteManagers(aAddEventManagersDTO, aCancellationToken)
         .ToIResult();
 

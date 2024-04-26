@@ -36,9 +36,9 @@ namespace Events.Domain.Entities
 
 
         /// <summary>
-        /// List of <see cref="EventTag"/> for this EventTemplate.
+        /// List of <see cref="Tag"/> for this EventTemplate.
         /// </summary>
-        public virtual ICollection<EventTag> Tags { get; set; } = [];
+        public virtual ICollection<Tag> Tags { get; set; } = [];
         public virtual ICollection<EventRoleTemplate> EventRoleTemplates { get; set; } = [];
         public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
 

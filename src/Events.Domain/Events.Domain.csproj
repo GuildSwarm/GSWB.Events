@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Repositories\" />
     <Folder Include="Entities\BusinessLogic\" />
     <Folder Include="Events\" />
     <Folder Include="Errors\Exceptions\" />

@@ -9,12 +9,9 @@ namespace Events.Domain.Entities
 {
     public class EventTag : Entity<Guid>
     {
-        public required string Name { get; set; }
-        public string? Description { get; set; }
+        public Guid EventId { get; set; }
+        public Guid TagId { get; set; }
 
-
-        public virtual ICollection<EventTemplate> EventTemplates { get; set; } = [];
-        public virtual ICollection<Event> Events { get; set; } = [];
-
+        internal EventTag() { }
     }
 }

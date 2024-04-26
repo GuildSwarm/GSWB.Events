@@ -96,16 +96,6 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="26" Y="23.63" />
-        <Point X="23.125" Y="23.63" />
-        <Point X="23.125" Y="21.425" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-2.066" Y="0.06" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannel" FixedToPoint="true">
       <Path>
         <Point X="26.75" Y="24.896" />
@@ -126,23 +116,30 @@
     <AssociationLine Name="Managers" Type="Events.Domain.Entities.EventManager" FixedFromPoint="true">
       <Path>
         <Point X="27.562" Y="22.25" />
-        <Point X="27.562" Y="19.127" />
+        <Point X="27.562" Y="18.934" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-2.607" Y="0.052" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="26" Y="22.875" />
+        <Point X="24.938" Y="22.875" />
+        <Point X="24.938" Y="23.5" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AhAAAAAAAABwAAEAAAAgAAwwgAIAAEAAAABAAEAAAAA=</HashCode>
-      <FileName>Entities\Event.cs</FileName>
+      <HashCode>ABAAAAAAACBwAADAAAAgAAQwgAIAAFAAAAAAAEAAAAA=</HashCode>
+      <FileName>Aggregates\Event.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="DiscordTemplate" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Tags" />
       <Property Name="Requirements" />
       <Property Name="Managers" />
+      <Property Name="Tags" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventActivity">
@@ -168,9 +165,12 @@
   </Class>
   <Class Name="Events.Domain.Entities.EventManager">
     <Position X="27.25" Y="17.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true">
       <Path>
-        <Point X="27.438" Y="19.127" />
+        <Point X="27.438" Y="18.935" />
         <Point X="27.438" Y="22.25" />
       </Path>
     </AssociationLine>
@@ -340,7 +340,7 @@
       <Property Name="EventTemplates" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Events.Domain.Entities.EventTag">
+  <Class Name="Events.Domain.Entities.Tag">
     <Position X="21.75" Y="20" Width="2" />
     <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
@@ -352,23 +352,12 @@
         <Position X="0.054" Y="-0.288" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Events" Type="Events.Domain.Entities.Event" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="23" Y="21.425" />
-        <Point X="23" Y="23.793" />
-        <Point X="26" Y="23.793" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.026" Y="-0.327" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABgAAAAAAAAAAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\EventTag.cs</FileName>
+      <HashCode>AAAAAAAAAABgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Tag.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="EventTemplates" />
-      <Property Name="Events" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventTemplate">
@@ -379,7 +368,7 @@
         <Point X="18.625" Y="30" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tags" Type="Events.Domain.Entities.Tag" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="20.75" Y="24.971" />
         <Point X="22.125" Y="24.971" />
@@ -452,6 +441,13 @@
     <ShowAsCollectionAssociation>
       <Property Name="Roles" />
     </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Events.Domain.Entities.EventTag">
+    <Position X="23.75" Y="23.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Entities\EventTag.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

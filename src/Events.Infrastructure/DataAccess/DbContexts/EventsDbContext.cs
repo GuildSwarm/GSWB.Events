@@ -18,7 +18,7 @@ namespace Events.Infrastructure.DataAccess.DbContexts
         public virtual DbSet<EventRequirement> EventRequirements { get; set; }
         public virtual DbSet<EventRole> EventRoles { get; set; }
         public virtual DbSet<EventRoleTemplate> EventRoleTemplates { get; set; }
-        public virtual DbSet<EventTag> EventTags { get; set; }
+        public virtual DbSet<Tag> EventTags { get; set; }
         public virtual DbSet<EventTemplate> EventTemplates { get; set; }
         public virtual DbSet<StaticTransaction> StaticTransactions { get; set; }
 
