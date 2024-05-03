@@ -37,7 +37,7 @@ namespace Events.API
         /// </summary>
         public static void UsePresentation(this WebApplication aWebApplication)
         {
-            if (aWebApplication.Environment.IsDevelopment() || aWebApplication.Environment.IsStaging())
+            if (aWebApplication.Environment.IsDevelopment())
             {
                 aWebApplication.UseSwagger();
                 aWebApplication.UseSwaggerUI();
