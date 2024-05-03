@@ -38,11 +38,11 @@ namespace Events.API.Endpoints.Public
         /// <summary>
         /// Creates a new event
         /// </summary>
-        private async Task<IResult> Post_AddEventManagers(Guid eventId, EventManagersDTO aAddEventManagersDTO, [FromServices] AddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Post_AddEventManagers(Guid id, EventManagersDTO aAddEventManagersDTO, [FromServices] AddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
         => await aAddEventManagersService.AddManagers(aAddEventManagersDTO, aCancellationToken)
         .ToIResult();
 
-        private async Task<IResult> Delete_DeleteEventManagers(Guid eventId, [FromBody] EventManagersDTO aAddEventManagersDTO, [FromServices] DeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Delete_DeleteEventManagers(Guid id, [FromBody] EventManagersDTO aAddEventManagersDTO, [FromServices] DeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
         => await aDeleteEventManagersService.DeleteManagers(aAddEventManagersDTO, aCancellationToken)
         .ToIResult();
 
