@@ -39,7 +39,7 @@ namespace Events.API.Endpoints.Public
         }
 
         /// <summary>
-        /// Creates a new event
+        /// Creates a new event, the member who created the event will be the default manager
         /// </summary>
         private async Task<IResult> Post_CreateEvent(
             [FromBody] CreateEventDTO aCreateEventDto,

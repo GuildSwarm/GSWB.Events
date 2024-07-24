@@ -2,8 +2,6 @@
 using Common.Domain.ValueObjects;
 using Common.Infrastructure.Communication.ApiRoutes;
 using Events.Application.Contracts.UseCases.EventManagers;
-using Events.Application.DTOs;
-using Events.Application.UseCases.EventManagers;
 using Microsoft.AspNetCore.Mvc;
 using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;
 using TGF.CA.Presentation;
@@ -44,7 +42,7 @@ namespace Events.API.Endpoints.Public
         }
 
         /// <summary>
-        /// 
+        /// List all managers of an event.
         /// </summary>
         private async Task<IResult> Get_AddEventManagers(Guid id, HttpContext aHttpContext, [FromServices] IListEventManagersService aListEventManagersService, CancellationToken aCancellationToken = default)
         => await Result.ContextAccessTokenResult(aHttpContext)
@@ -52,7 +50,7 @@ namespace Events.API.Endpoints.Public
         .ToIResult();
 
         /// <summary>
-        /// 
+        /// Adds a list of new managers to the event from a list of memberId
         /// </summary>
         private async Task<IResult> Post_AddEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<Guid> aMemberIdList, [FromServices] IAddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
         => await  Result.ContextAccessTokenResult(aHttpContext)
@@ -60,7 +58,7 @@ namespace Events.API.Endpoints.Public
         .ToIResult();
 
         /// <summary>
-        /// 
+        /// Deletes a list if manages for the event from their memberId
         /// </summary>
         private async Task<IResult> Delete_DeleteEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<Guid> aMemberIdList, [FromServices] IDeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
         => await Result.ContextAccessTokenResult(aHttpContext)
