@@ -23,17 +23,17 @@ namespace Events.Domain.Entities
         /// <summary>
         /// Fecha de inicio prevista del evento(creacion de canales).
         /// </summary>
-        public DateTime StartDate { get; set; }
+        public DateTimeOffset StartDate { get; set; }
 
         /// <summary>
         /// Fecha de inicio del evento (triggered by manager).
         /// </summary>
-        public DateTime LaunchDate { get; set; }
+        public DateTimeOffset LaunchDate { get; set; }
 
         /// <summary>
         /// Automatico, cuando el bot cierra el evebto, set to time now.
         /// </summary>
-        public DateTime EndDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
 
     }
 }

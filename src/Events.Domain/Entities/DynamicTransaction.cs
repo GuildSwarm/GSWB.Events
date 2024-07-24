@@ -13,7 +13,7 @@ namespace Events.Domain.Entities
         public string? Reason { get; set; }
         public required ActivityParticipation Sender { get; set; }
         public required ActivityParticipation Receiver { get; set; }
-        public DateTime SentAt { get; set; }
-        public DateTime ReceivedAt { get; set; }
+        public DateTimeOffset SentAt { get; set; }
+        public DateTimeOffset ReceivedAt { get; set; }
     }
 }

@@ -7,9 +7,11 @@ using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
 {
-    public class EventActivity : Entity<Guid>
+    public class EventParticipationRequirement : Entity<Guid>
     {
         public required Event Event { get; set; }
-        public required Guid ActivityId { get; set; }
+        public Guid ParticipationRequirementId { get; set; }
+
+        internal EventParticipationRequirement() { }
     }
 }

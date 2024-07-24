@@ -1,6 +1,5 @@
-﻿using Common.Application.DTOs.Events;
-using Events.Application.Contracts.Repositories;
-using Events.Application.Contracts.Services;
+﻿using Events.Application.Contracts.Repositories;
+using Events.Application.Contracts.UseCases.Events;
 using Events.Application.DTOs;
 using Events.Application.Mappings;
 using Events.Domain.Entities;
@@ -10,17 +9,13 @@ using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases
 {
-    public class EventsService(
-        IEventRepository aEventRepository) : IEventsService
+    public class ListEventsService(
+        IEventRepository aEventRepository) : IListEventsService
     {
 
         #region IEventService
-        public async Task<IHttpResult<EventDTO>> CreateEvent(CreateEventDTO aCreateEventDto, CancellationToken aCancellationToken = default)
-            => await Result.CancellationTokenResult(aCancellationToken)
-            .Bind(_ => aEventRepository.AddAsync(new Event() { Name = "Test" }, aCancellationToken))
-            .Map(newEvent => newEvent.ToDto());
 
-        public async Task<IHttpResult<PaginatedListDTO<EventDTO>>> GetEventList(
+        public async Task<IHttpResult<PaginatedListDTO<EventDTO>>> ListEvents(
             int aPage, int aPageSize,
             string aSortBy,
             CancellationToken aCancellationToken = default)

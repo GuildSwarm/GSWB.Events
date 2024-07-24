@@ -1,4 +1,5 @@
-﻿using Common.Application.DTOs.Events;
+﻿using Common.Application.Contracts.Services;
+using Common.Application.DTOs.Events;
 using Events.Application.Contracts.Repositories;
 using Events.Application.Contracts.UseCases.Events;
 using Events.Application.DTOs;
@@ -11,29 +12,34 @@ using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.Events
 {
-    public class CreateEventService(IEventRepository aEventRepository, TagIdListValidator aTagIdListValidator, EventManagerValidator aEventManagerValidator)
+    public class CreateEventService(IEventRepository aEventRepository, IMembersCommunicationService aMembersCommunicationService, TagIdListValidator aTagIdListValidator, EventManagerValidator aEventManagerValidator)
         : ICreateEventService
     {
-        public async Task<IHttpResult<EventDTO>> CreateEvent(CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
+        public async Task<IHttpResult<EventDTO>> CreateEvent(string aDiscordMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
         {
-            var lEventResult = await Result.CancellationTokenResult(aCancellationToken)
-                .Map(_ => GetNewEventFromEventInformation(aCreateEventDTO.EventInformation))
-                //.Tap(newEvent => newEvent.AddManagers([aCreateEventDTO.MemberIdCreator], aEventManagerValidator))
-                .Bind(newEvent => aEventRepository.AddAsync(newEvent))//Removed MemberIdCreator from DTO, get the actor member Id from the access token DiscordId using members endpoint MembersApiRoutes.private_members_getByDiscordUserId
+            var lMemberCreatorResult = await Result.CancellationTokenResult(aCancellationToken)
+                .Bind( _ => aMembersCommunicationService.GetExistingMember(Convert.ToUInt64(aDiscordMembeIdCreator), aCancellationToken));
+
+            var lNewEventResult = await lMemberCreatorResult
+                .Map(_ => GetNewEventFromEventInformation(aCreateEventDTO.EventInformation));
+
+            var lCreateEventResult = await lNewEventResult
+                .Bind(newEvent => newEvent.AddManagersAsync([lMemberCreatorResult.Value.Id], aEventManagerValidator))
+                .Bind(_ => aEventRepository.AddAsync(lNewEventResult.Value))
                 .Map(newEvent => newEvent.ToDto());
 
-            return lEventResult;
+            return lCreateEventResult;
         }
 
-        private Event GetNewEventFromEventInformation(EventInformationDTO aEventInformationDTO)
+        private async Task<Event> GetNewEventFromEventInformation(EventInformationDTO aEventInformationDTO)
         {
             var lNewEvent = new Event() {
                 Name = aEventInformationDTO.Name,
                 Description = aEventInformationDTO.Description,
                 StartDate = aEventInformationDTO.StartDate,
-                ExpectedDuration = aEventInformationDTO.ExpectedDuration,
+                ExpectedDuration = TimeSpan.FromMinutes(aEventInformationDTO.ExpectedDurationInMinustes),
             };
-            _ = lNewEvent.AddTags(aEventInformationDTO.TagIdList, aTagIdListValidator);
+            _ = await lNewEvent.AddTagsAsync(aEventInformationDTO.TagIdList, aTagIdListValidator);
             return lNewEvent;
         }
     }

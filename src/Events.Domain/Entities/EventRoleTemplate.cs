@@ -17,7 +17,7 @@ namespace Events.Domain.Entities
         public int? RequiredCount { get; set; }
 
 
-        public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
+        public virtual ICollection<ParticipationRequirement> Requirements { get; set; } = [];
         public virtual ICollection<EventTemplate> EventTemplates { get; set; } = [];
 
     }

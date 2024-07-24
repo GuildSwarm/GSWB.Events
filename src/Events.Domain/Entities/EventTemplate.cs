@@ -27,7 +27,7 @@ namespace Events.Domain.Entities
         /// <summary>
         /// Scheduled event start date(determines discord channels creation time).
         /// </summary>
-        public DateTime StartDate { get; set; }
+        public DateTimeOffset StartDate { get; set; }
 
         /// <summary>
         /// The template for discord channels setup of this event.
@@ -40,7 +40,7 @@ namespace Events.Domain.Entities
         /// </summary>
         public virtual ICollection<Tag> Tags { get; set; } = [];
         public virtual ICollection<EventRoleTemplate> EventRoleTemplates { get; set; } = [];
-        public virtual ICollection<EventRequirement> Requirements { get; set; } = [];
+        public virtual ICollection<ParticipationRequirement> Requirements { get; set; } = [];
 
     }
 }

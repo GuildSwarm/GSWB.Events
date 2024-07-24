@@ -9,7 +9,7 @@ namespace Events.Domain.Entities
 {
     public class EventTag : Entity<Guid>
     {
-        public Guid EventId { get; set; }
+        public required Event Event { get; set; }
         public Guid TagId { get; set; }
 
         internal EventTag() { }

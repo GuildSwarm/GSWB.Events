@@ -10,6 +10,14 @@ namespace Events.Application.Contracts.Repositories
     public interface IEventRepository : IRepositoryBase
     {
         /// <summary>
+        /// Get a given event from its id including the managers
+        /// </summary>
+        /// <param name="aId"></param>
+        /// <param name="aCancellationToken"></param>
+        /// <returns></returns>
+        public Task<IHttpResult<Event>> GetByIdAsync(Guid aId, CancellationToken aCancellationToken = default);
+
+        /// <summary>
         /// Retrieves a paginated list of Events.
         /// </summary>
         /// <param name="aPageSize">The number of events to retrieve per page.</param>

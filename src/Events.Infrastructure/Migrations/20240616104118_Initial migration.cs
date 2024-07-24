@@ -65,17 +65,17 @@ namespace Events.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventRequirements",
+                name: "EventRoles",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    RequiredRoleId = table.Column<Guid>(type: "uuid", nullable: true),
-                    RequiredLicenseId = table.Column<Guid>(type: "uuid", nullable: true),
-                    IsGameHandleVerificationRequired = table.Column<bool>(type: "boolean", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Slots = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventRequirements", x => x.Id);
+                    table.PrimaryKey("PK_EventRoles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +119,20 @@ namespace Events.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ParticipationRequirements",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    RequiredRoleId = table.Column<Guid>(type: "uuid", nullable: true),
+                    RequiredLicenseId = table.Column<Guid>(type: "uuid", nullable: true),
+                    IsGameHandleVerificationRequired = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ParticipationRequirements", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ActivityParticipations",
                 columns: table => new
                 {
@@ -146,12 +160,12 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     DiscordTemplateId = table.Column<Guid>(type: "uuid", nullable: true),
                     DiscordEventId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
                     ExpectedDuration = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    LaunchDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    LaunchDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    EndDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,7 +185,7 @@ namespace Events.Infrastructure.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     ExpectedDuration = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     DiscordTemplateId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
@@ -185,7 +199,55 @@ namespace Events.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventRequirementEventRoleTemplate",
+                name: "EventRoleEventRoster",
+                columns: table => new
+                {
+                    RolesId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RostersId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventRoleEventRoster", x => new { x.RolesId, x.RostersId });
+                    table.ForeignKey(
+                        name: "FK_EventRoleEventRoster_EventRoles_RolesId",
+                        column: x => x.RolesId,
+                        principalTable: "EventRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventRoleEventRoster_EventRoster_RostersId",
+                        column: x => x.RostersId,
+                        principalTable: "EventRoster",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EventRoleParticipationRequirement",
+                columns: table => new
+                {
+                    EventRolesId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ParticipationRequirementsId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventRoleParticipationRequirement", x => new { x.EventRolesId, x.ParticipationRequirementsId });
+                    table.ForeignKey(
+                        name: "FK_EventRoleParticipationRequirement_EventRoles_EventRolesId",
+                        column: x => x.EventRolesId,
+                        principalTable: "EventRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventRoleParticipationRequirement_ParticipationRequirements~",
+                        column: x => x.ParticipationRequirementsId,
+                        principalTable: "ParticipationRequirements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EventRoleTemplateParticipationRequirement",
                 columns: table => new
                 {
                     EventRoleTemplatesId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -193,17 +255,17 @@ namespace Events.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventRequirementEventRoleTemplate", x => new { x.EventRoleTemplatesId, x.RequirementsId });
+                    table.PrimaryKey("PK_EventRoleTemplateParticipationRequirement", x => new { x.EventRoleTemplatesId, x.RequirementsId });
                     table.ForeignKey(
-                        name: "FK_EventRequirementEventRoleTemplate_EventRequirements_Require~",
-                        column: x => x.RequirementsId,
-                        principalTable: "EventRequirements",
+                        name: "FK_EventRoleTemplateParticipationRequirement_EventRoleTemplate~",
+                        column: x => x.EventRoleTemplatesId,
+                        principalTable: "EventRoleTemplates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EventRequirementEventRoleTemplate_EventRoleTemplates_EventR~",
-                        column: x => x.EventRoleTemplatesId,
-                        principalTable: "EventRoleTemplates",
+                        name: "FK_EventRoleTemplateParticipationRequirement_ParticipationRequ~",
+                        column: x => x.RequirementsId,
+                        principalTable: "ParticipationRequirements",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -217,8 +279,8 @@ namespace Events.Infrastructure.Migrations
                     Reason = table.Column<string>(type: "text", nullable: true),
                     SenderId = table.Column<Guid>(type: "uuid", nullable: false),
                     ReceiverId = table.Column<Guid>(type: "uuid", nullable: false),
-                    SentAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ReceivedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    SentAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ReceivedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -269,38 +331,8 @@ namespace Events.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_EventActivities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventActivities_Activities_ActivityId",
-                        column: x => x.ActivityId,
-                        principalTable: "Activities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_EventActivities_Events_EventId",
                         column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventEventRequirement",
-                columns: table => new
-                {
-                    EventsId = table.Column<Guid>(type: "uuid", nullable: false),
-                    RequirementsId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EventEventRequirement", x => new { x.EventsId, x.RequirementsId });
-                    table.ForeignKey(
-                        name: "FK_EventEventRequirement_EventRequirements_RequirementsId",
-                        column: x => x.RequirementsId,
-                        principalTable: "EventRequirements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EventEventRequirement_Events_EventsId",
-                        column: x => x.EventsId,
                         principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -311,36 +343,61 @@ namespace Events.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EventId = table.Column<Guid>(type: "uuid", nullable: false),
                     MemberId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Logbook = table.Column<string>(type: "text", nullable: true)
+                    Logbook = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EventManagemers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventManagemers_Events_EventId",
-                        column: x => x.EventId,
+                        name: "FK_EventManagemers_Events_Id",
+                        column: x => x.Id,
                         principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventRoles",
+                name: "EventParticipationRequirements",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    Slots = table.Column<int>(type: "integer", nullable: false),
-                    EventId = table.Column<Guid>(type: "uuid", nullable: false)
+                    ParticipationRequirementId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventRoles", x => x.Id);
+                    table.PrimaryKey("PK_EventParticipationRequirements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventRoles_Events_EventId",
+                        name: "FK_EventParticipationRequirements_Events_Id",
+                        column: x => x.Id,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EventParticipations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    EventId = table.Column<Guid>(type: "uuid", nullable: false),
+                    EventRoleId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MemberId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Duration = table.Column<int>(type: "integer", nullable: false),
+                    ParticipantNotes = table.Column<string>(type: "text", nullable: true),
+                    ManagerNotes = table.Column<string>(type: "text", nullable: true),
+                    ChannelId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventParticipations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EventParticipations_DiscordEventChannels_ChannelId",
+                        column: x => x.ChannelId,
+                        principalTable: "DiscordEventChannels",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_EventParticipations_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "Id",
@@ -352,15 +409,14 @@ namespace Events.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    EventId = table.Column<Guid>(type: "uuid", nullable: false),
                     TagId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EventTag", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EventTag_Events_EventId",
-                        column: x => x.EventId,
+                        name: "FK_EventTag_Events_Id",
+                        column: x => x.Id,
                         principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -383,30 +439,6 @@ namespace Events.Infrastructure.Migrations
                         column: x => x.EventTemplateId,
                         principalTable: "EventTemplates",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventRequirementEventTemplate",
-                columns: table => new
-                {
-                    EventTemplatesId = table.Column<Guid>(type: "uuid", nullable: false),
-                    RequirementsId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EventRequirementEventTemplate", x => new { x.EventTemplatesId, x.RequirementsId });
-                    table.ForeignKey(
-                        name: "FK_EventRequirementEventTemplate_EventRequirements_Requirement~",
-                        column: x => x.RequirementsId,
-                        principalTable: "EventRequirements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EventRequirementEventTemplate_EventTemplates_EventTemplates~",
-                        column: x => x.EventTemplatesId,
-                        principalTable: "EventTemplates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -434,6 +466,30 @@ namespace Events.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventTemplateParticipationRequirement",
+                columns: table => new
+                {
+                    EventTemplatesId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RequirementsId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventTemplateParticipationRequirement", x => new { x.EventTemplatesId, x.RequirementsId });
+                    table.ForeignKey(
+                        name: "FK_EventTemplateParticipationRequirement_EventTemplates_EventT~",
+                        column: x => x.EventTemplatesId,
+                        principalTable: "EventTemplates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventTemplateParticipationRequirement_ParticipationRequirem~",
+                        column: x => x.RequirementsId,
+                        principalTable: "ParticipationRequirements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EventTemplateTag",
                 columns: table => new
                 {
@@ -453,82 +509,6 @@ namespace Events.Infrastructure.Migrations
                         name: "FK_EventTemplateTag_EventTemplates_EventTemplatesId",
                         column: x => x.EventTemplatesId,
                         principalTable: "EventTemplates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventParticipations",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    MemberId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Duration = table.Column<int>(type: "integer", nullable: false),
-                    ParticipantNotes = table.Column<string>(type: "text", nullable: true),
-                    ManagerNotes = table.Column<string>(type: "text", nullable: true),
-                    RoleId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ChannelId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EventParticipations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EventParticipations_DiscordEventChannels_ChannelId",
-                        column: x => x.ChannelId,
-                        principalTable: "DiscordEventChannels",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_EventParticipations_EventRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "EventRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventRequirementEventRole",
-                columns: table => new
-                {
-                    EventRequirementsId = table.Column<Guid>(type: "uuid", nullable: false),
-                    EventRolesId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EventRequirementEventRole", x => new { x.EventRequirementsId, x.EventRolesId });
-                    table.ForeignKey(
-                        name: "FK_EventRequirementEventRole_EventRequirements_EventRequiremen~",
-                        column: x => x.EventRequirementsId,
-                        principalTable: "EventRequirements",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EventRequirementEventRole_EventRoles_EventRolesId",
-                        column: x => x.EventRolesId,
-                        principalTable: "EventRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EventRoleEventRoster",
-                columns: table => new
-                {
-                    RolesId = table.Column<Guid>(type: "uuid", nullable: false),
-                    RostersId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EventRoleEventRoster", x => new { x.RolesId, x.RostersId });
-                    table.ForeignKey(
-                        name: "FK_EventRoleEventRoster_EventRoles_RolesId",
-                        column: x => x.RolesId,
-                        principalTable: "EventRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EventRoleEventRoster_EventRoster_RostersId",
-                        column: x => x.RostersId,
-                        principalTable: "EventRoster",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -564,23 +544,8 @@ namespace Events.Infrastructure.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventActivities_ActivityId",
-                table: "EventActivities",
-                column: "ActivityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EventActivities_EventId",
                 table: "EventActivities",
-                column: "EventId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventEventRequirement_RequirementsId",
-                table: "EventEventRequirement",
-                column: "RequirementsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventManagemers_EventId",
-                table: "EventManagemers",
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
@@ -589,24 +554,9 @@ namespace Events.Infrastructure.Migrations
                 column: "ChannelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventParticipations_RoleId",
+                name: "IX_EventParticipations_EventId",
                 table: "EventParticipations",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventRequirementEventRole_EventRolesId",
-                table: "EventRequirementEventRole",
-                column: "EventRolesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventRequirementEventRoleTemplate_RequirementsId",
-                table: "EventRequirementEventRoleTemplate",
-                column: "RequirementsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventRequirementEventTemplate_RequirementsId",
-                table: "EventRequirementEventTemplate",
-                column: "RequirementsId");
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventRoleEventRoster_RostersId",
@@ -614,9 +564,9 @@ namespace Events.Infrastructure.Migrations
                 column: "RostersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventRoles_EventId",
-                table: "EventRoles",
-                column: "EventId");
+                name: "IX_EventRoleParticipationRequirement_ParticipationRequirements~",
+                table: "EventRoleParticipationRequirement",
+                column: "ParticipationRequirementsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventRoleTemplateEventTemplate_EventTemplatesId",
@@ -624,14 +574,19 @@ namespace Events.Infrastructure.Migrations
                 column: "EventTemplatesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EventRoleTemplateParticipationRequirement_RequirementsId",
+                table: "EventRoleTemplateParticipationRequirement",
+                column: "RequirementsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Events_DiscordTemplateId",
                 table: "Events",
                 column: "DiscordTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventTag_EventId",
-                table: "EventTag",
-                column: "EventId");
+                name: "IX_EventTemplateParticipationRequirement_RequirementsId",
+                table: "EventTemplateParticipationRequirement",
+                column: "RequirementsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventTemplates_DiscordTemplateId",
@@ -662,31 +617,31 @@ namespace Events.Infrastructure.Migrations
                 name: "EventActivities");
 
             migrationBuilder.DropTable(
-                name: "EventEventRequirement");
+                name: "EventManagemers");
 
             migrationBuilder.DropTable(
-                name: "EventManagemers");
+                name: "EventParticipationRequirements");
 
             migrationBuilder.DropTable(
                 name: "EventParticipations");
 
             migrationBuilder.DropTable(
-                name: "EventRequirementEventRole");
-
-            migrationBuilder.DropTable(
-                name: "EventRequirementEventRoleTemplate");
-
-            migrationBuilder.DropTable(
-                name: "EventRequirementEventTemplate");
-
-            migrationBuilder.DropTable(
                 name: "EventRoleEventRoster");
+
+            migrationBuilder.DropTable(
+                name: "EventRoleParticipationRequirement");
 
             migrationBuilder.DropTable(
                 name: "EventRoleTemplateEventTemplate");
 
             migrationBuilder.DropTable(
+                name: "EventRoleTemplateParticipationRequirement");
+
+            migrationBuilder.DropTable(
                 name: "EventTag");
+
+            migrationBuilder.DropTable(
+                name: "EventTemplateParticipationRequirement");
 
             migrationBuilder.DropTable(
                 name: "EventTemplateTag");
@@ -695,16 +650,19 @@ namespace Events.Infrastructure.Migrations
                 name: "StaticTransactions");
 
             migrationBuilder.DropTable(
-                name: "EventRequirements");
+                name: "EventRoster");
 
             migrationBuilder.DropTable(
                 name: "EventRoles");
 
             migrationBuilder.DropTable(
-                name: "EventRoster");
+                name: "EventRoleTemplates");
 
             migrationBuilder.DropTable(
-                name: "EventRoleTemplates");
+                name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "ParticipationRequirements");
 
             migrationBuilder.DropTable(
                 name: "EventTags");
@@ -716,16 +674,13 @@ namespace Events.Infrastructure.Migrations
                 name: "ActivityParticipations");
 
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "DiscordEventChannels");
 
             migrationBuilder.DropTable(
                 name: "DiscordEventChannelTemplate");
 
             migrationBuilder.DropTable(
                 name: "Activities");
-
-            migrationBuilder.DropTable(
-                name: "DiscordEventChannels");
         }
     }
 }

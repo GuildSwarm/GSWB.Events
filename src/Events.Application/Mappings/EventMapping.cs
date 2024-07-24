@@ -9,6 +9,6 @@ namespace Events.Application.Mappings
     public static class EventMapping
     {
         public static EventDTO ToDto(this Event aEvent)
-        => new(aEvent.Name, aEvent.Description, aEvent.ExpectedDuration, aEvent.StartDate, aEvent.LaunchDate, aEvent.EndDate);
+        => new(aEvent.Id, aEvent.Name, aEvent.Description, aEvent.ExpectedDuration, aEvent.StartDate, aEvent.LaunchDate, aEvent.EndDate);
     }
 }

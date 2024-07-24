@@ -1,5 +1,4 @@
-﻿using Events.Application.Contracts.Services;
-using Events.Application.DTOs;
+﻿using Events.Application.DTOs;
 using Common.Infrastructure.Communication.ApiRoutes;
 using Common.Domain.ValueObjects;
 using Common.Presentation.Validation;
@@ -12,6 +11,8 @@ using TGF.Common.ROP.Result;
 using TGF.CA.Application.DTOs;
 using Common.Application.DTOs.Events;
 using Events.Application.Contracts.UseCases.Events;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Events.API.Endpoints.Public
 {
@@ -40,20 +41,28 @@ namespace Events.API.Endpoints.Public
         /// <summary>
         /// Creates a new event
         /// </summary>
-        private async Task<IResult> Post_CreateEvent(CreateEventDTO aCreateEventDto, ICreateEventService aCreateEventService, CancellationToken aCancellationToken = default)
-        => await Result.CancellationTokenResult(aCancellationToken)
-            .Bind(_ => aCreateEventService.CreateEvent(aCreateEventDto, aCancellationToken))
-            .ToIResult();
+        private async Task<IResult> Post_CreateEvent(
+            [FromBody] CreateEventDTO aCreateEventDto,
+            [FromServices] ICreateEventService aCreateEventService,
+            [FromServices] TokenClaimsValidator aTokenClaimsValidator,
+            ClaimsPrincipal aClaimsPrincipal,
+            CancellationToken aCancellationToken = default)
+        {
+            return await Result.CancellationTokenResult(aCancellationToken)
+                .Validate(aClaimsPrincipal, aTokenClaimsValidator)
+                .Bind(discodMemberId => aCreateEventService.CreateEvent(aClaimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier)!, aCreateEventDto, aCancellationToken))
+                .ToIResult();
+        }
 
         /// <summary>
         /// Get the list of events(<see cref="PaginatedListDTO{T}"/>) under filtering and pagination conditions specified in the request's query parameters and sorted by a given column name.
         /// </summary>
-        private async Task<IResult> Get_EventList(IEventsService aEventsService, PaginationValidator aPaginationValidator,
+        private async Task<IResult> Get_EventList(IListEventsService aListEventsService, PaginationValidator aPaginationValidator,
             int page = 1, int pageSize = 20, string sortBy = nameof(EventDTO.Name),
             CancellationToken aCancellationToken = default)
         =>
         await Result.CancellationTokenResult(aCancellationToken)
-        .Bind(_ => aEventsService.GetEventList(page, pageSize, sortBy, aCancellationToken))
+        .Bind(_ => aListEventsService.ListEvents(page, pageSize, sortBy, aCancellationToken))
         .ToIResult();
 
     }

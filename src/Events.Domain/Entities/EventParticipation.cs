@@ -9,11 +9,12 @@ namespace Events.Domain.Entities
 {
     public class EventParticipation : Entity<Guid>
     {
+        public required Event Event { get; set; }
+        public required Guid EventRoleId { get; set; }
         public required Guid MemberId { get; set; }
         public int Duration { get; set; }
         public string? ParticipantNotes { get; set; }
         public string? ManagerNotes { get; set; }
-        public required EventRole Role { get; set; }
         public DiscordEventChannel? Channel { get; set; }
     }
 }

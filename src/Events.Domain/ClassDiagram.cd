@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="Events.Domain.Entities.Activity">
-    <Position X="29.25" Y="27.25" Width="2.5" />
+    <Position X="26.5" Y="32.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Activity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Events.Domain.Entities.ActivityParticipation">
-    <Position X="33.5" Y="27.25" Width="1.75" />
+    <Position X="30.75" Y="32.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAEAAAAA=</HashCode>
       <FileName>Entities\ActivityParticipation.cs</FileName>
@@ -18,7 +18,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.ActivityTemplate">
-    <Position X="20.25" Y="27.25" Width="2" />
+    <Position X="13.75" Y="26.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\ActivityTemplate.cs</FileName>
@@ -28,14 +28,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.DiscordEventChannel">
-    <Position X="26.25" Y="30" Width="2.25" />
+    <Position X="30" Y="25.25" Width="2.25" />
     <AssociationLine Name="Parent" Type="Events.Domain.Entities.DiscordEventChannel" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="28.5" Y="30.272" />
-        <Point X="28.875" Y="30.272" />
-        <Point X="28.875" Y="29.625" />
-        <Point X="28.25" Y="29.625" />
-        <Point X="28.25" Y="30" />
+        <Point X="32.25" Y="25.522" />
+        <Point X="32.625" Y="25.522" />
+        <Point X="32.625" Y="24.875" />
+        <Point X="32" Y="24.875" />
+        <Point X="32" Y="25.25" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -47,14 +47,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.DiscordEventChannelTemplate">
-    <Position X="18" Y="30" Width="2.25" />
+    <Position X="11.5" Y="29" Width="2.25" />
     <AssociationLine Name="Parent" Type="Events.Domain.Entities.DiscordEventChannelTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="20.25" Y="30.272" />
-        <Point X="20.625" Y="30.272" />
-        <Point X="20.625" Y="29.625" />
-        <Point X="20" Y="29.625" />
-        <Point X="20" Y="30" />
+        <Point X="13.75" Y="29.272" />
+        <Point X="14.125" Y="29.272" />
+        <Point X="14.125" Y="28.625" />
+        <Point X="13.5" Y="28.625" />
+        <Point X="13.5" Y="29" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -66,11 +66,11 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.DynamicTransaction">
-    <Position X="37.25" Y="27.25" Width="2.25" />
+    <Position X="34.5" Y="32.25" Width="2.25" />
     <AssociationLine Name="Sender" Type="Events.Domain.Entities.ActivityParticipation" FixedToPoint="true">
       <Path>
-        <Point X="37.25" Y="28" />
-        <Point X="35.25" Y="28" />
+        <Point X="34.5" Y="33" />
+        <Point X="32.5" Y="33" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.072" Y="-0.266" />
@@ -78,8 +78,8 @@
     </AssociationLine>
     <AssociationLine Name="Receiver" Type="Events.Domain.Entities.ActivityParticipation" FixedToPoint="true">
       <Path>
-        <Point X="37.25" Y="27.875" />
-        <Point X="35.25" Y="27.875" />
+        <Point X="34.5" Y="32.875" />
+        <Point X="32.5" Y="32.875" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -96,37 +96,35 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannel" FixedToPoint="true">
+    <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannel" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="26.75" Y="24.896" />
-        <Point X="26.75" Y="30" />
+        <Point X="28.25" Y="23.438" />
+        <Point X="28.625" Y="23.438" />
+        <Point X="28.625" Y="25.875" />
+        <Point X="30" Y="25.875" />
       </Path>
-    </AssociationLine>
-    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="26.562" Y="22.25" />
-        <Point X="26.562" Y="18.074" />
-        <Point X="23.562" Y="18.074" />
-        <Point X="23.562" Y="16.117" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-3.052" Y="0.093" />
-      </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="Managers" Type="Events.Domain.Entities.EventManager" FixedFromPoint="true">
       <Path>
-        <Point X="27.562" Y="22.25" />
-        <Point X="27.562" Y="18.934" />
+        <Point X="27.062" Y="24.896" />
+        <Point X="27.062" Y="26.75" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-2.607" Y="0.052" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tags" Type="Events.Domain.Entities.EventTag" FixedFromPoint="true">
       <Path>
-        <Point X="26" Y="22.875" />
-        <Point X="24.938" Y="22.875" />
-        <Point X="24.938" Y="23.5" />
+        <Point X="26" Y="23" />
+        <Point X="23.25" Y="23" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventParticipationRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27.125" Y="22.25" />
+        <Point X="27.125" Y="21.875" />
+        <Point X="27.125" Y="21.875" />
+        <Point X="27.125" Y="18.742" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -137,41 +135,40 @@
       <Property Name="DiscordTemplate" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Requirements" />
       <Property Name="Managers" />
       <Property Name="Tags" />
+      <Property Name="Requirements" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventActivity">
-    <Position X="29.25" Y="24.5" Width="1.5" />
+    <Position X="24.25" Y="32.25" Width="1.5" />
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="29.875" Y="24.5" />
-        <Point X="29.875" Y="23.172" />
-        <Point X="28.25" Y="23.172" />
+        <Point X="25" Y="32.25" />
+        <Point X="25" Y="24.375" />
+        <Point X="26" Y="24.375" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.125" Y="-0.29" />
+        <Position X="0.19" Y="0.099" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAEAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\EventActivity.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Event" />
-      <Property Name="Activity" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventManager">
-    <Position X="27.25" Y="17.25" Width="2.25" />
+    <Position X="26.5" Y="26.75" Width="2.25" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true">
       <Path>
-        <Point X="27.438" Y="18.935" />
-        <Point X="27.438" Y="22.25" />
+        <Point X="26.875" Y="26.75" />
+        <Point X="26.875" Y="24.896" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -183,41 +180,37 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventParticipation">
-    <Position X="32" Y="22.25" Width="2.25" />
-    <AssociationLine Name="Role" Type="Events.Domain.Entities.EventRole" FixedFromPoint="true" FixedToPoint="true">
+    <Position X="30" Y="22.25" Width="2.25" />
+    <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedToPoint="true">
       <Path>
-        <Point X="33.125" Y="22.25" />
-        <Point X="33.125" Y="21.25" />
-        <Point X="30.75" Y="21.25" />
+        <Point X="30" Y="22.688" />
+        <Point X="28.25" Y="22.688" />
       </Path>
-      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
-        <Position X="0.061" Y="-0.239" Height="0.182" Width="1.013" />
-      </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="Channel" Type="Events.Domain.Entities.DiscordEventChannel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="34.25" Y="22.788" />
-        <Point X="40.62" Y="22.788" />
-        <Point X="40.62" Y="30.815" />
-        <Point X="28.5" Y="30.815" />
+        <Point X="32.25" Y="22.875" />
+        <Point X="33.256" Y="22.875" />
+        <Point X="33.256" Y="26.065" />
+        <Point X="32.25" Y="26.065" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAgIAACAAAAEACAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAgIAACAAAAAACAAQAAAgAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\EventParticipation.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Role" />
+      <Property Name="Event" />
       <Property Name="Channel" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Events.Domain.Entities.EventRequirement">
-    <Position X="21.75" Y="14.5" Width="3.25" />
+  <Class Name="Events.Domain.Entities.ParticipationRequirement">
+    <Position X="25.75" Y="14.75" Width="3.25" />
     <AssociationLine Name="EventRoles" Type="Events.Domain.Entities.EventRole" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="25" Y="15.587" />
-        <Point X="30.438" Y="15.587" />
-        <Point X="30.438" Y="20" />
+        <Point X="29" Y="15.837" />
+        <Point X="31.688" Y="15.837" />
+        <Point X="31.688" Y="19.5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.052" Y="0.06" />
@@ -225,128 +218,86 @@
     </AssociationLine>
     <AssociationLine Name="EventRoleTemplates" Type="Events.Domain.Entities.EventRoleTemplate" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="25" Y="14.772" />
-        <Point X="38.125" Y="14.772" />
-        <Point X="38.125" Y="20" />
+        <Point X="25.75" Y="15.188" />
+        <Point X="8.625" Y="15.188" />
+        <Point X="8.625" Y="17.75" />
       </Path>
-    </AssociationLine>
-    <AssociationLine Name="Events" Type="Events.Domain.Entities.Event" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="23.438" Y="16.117" />
-        <Point X="23.438" Y="18.205" />
-        <Point X="26.438" Y="18.205" />
-        <Point X="26.438" Y="22.25" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.082" Y="0.009" />
-      </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="21.75" Y="15.179" />
-        <Point X="14.805" Y="15.179" />
-        <Point X="14.805" Y="24.702" />
-        <Point X="18" Y="24.702" />
+        <Point X="25.75" Y="15.429" />
+        <Point X="13.25" Y="15.429" />
+        <Point X="13.25" Y="22.75" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.041" Y="0.119" />
+        <Position X="-3.028" Y="0.027" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>QAAAAEAAgABAAAAAAAAAAAAIAgAAAAAAAAAAAAAQAAA=</HashCode>
-      <FileName>Entities\EventRequirement.cs</FileName>
+      <HashCode>QAAAAEAAgABAAAAAAAAAAAAIAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Entities\ParticipationRequirement.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="EventRoles" />
       <Property Name="EventRoleTemplates" />
-      <Property Name="Events" />
       <Property Name="EventTemplates" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventRole">
-    <Position X="28.75" Y="20" Width="2" />
-    <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="29.875" Y="21.617" />
-        <Point X="29.875" Y="22.981" />
-        <Point X="28.25" Y="22.981" />
-      </Path>
-    </AssociationLine>
+    <Position X="30" Y="19.5" Width="2" />
     <AssociationLine Name="Rosters" Type="Events.Domain.Entities.EventRoster" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="30.75" Y="20.188" />
-        <Point X="33.125" Y="20.188" />
-        <Point X="33.125" Y="17.925" />
+        <Point X="32" Y="19.688" />
+        <Point X="35.125" Y="19.688" />
+        <Point X="35.125" Y="17.925" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.069" Y="0.092" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Participations" Type="Events.Domain.Entities.EventParticipation" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="ParticipationRequirements" Type="Events.Domain.Entities.ParticipationRequirement" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="30.75" Y="21.125" />
-        <Point X="33.25" Y="21.125" />
-        <Point X="33.25" Y="22.25" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-3.062" Y="0.041" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="EventRequirements" Type="Events.Domain.Entities.EventRequirement" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="30.562" Y="20" />
-        <Point X="30.562" Y="15.451" />
-        <Point X="25" Y="15.451" />
+        <Point X="31.812" Y="19.5" />
+        <Point X="31.812" Y="15.687" />
+        <Point X="29" Y="15.687" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAggAAAAAAAgEAQAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAggAAAAAAAAEAQAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\EventRole.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Event" />
-    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Rosters" />
-      <Property Name="Participations" />
-      <Property Name="EventRequirements" />
+      <Property Name="ParticipationRequirements" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventRoleTemplate">
-    <Position X="36.25" Y="20" Width="2.25" />
-    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventRequirement" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="38.312" Y="20" />
-        <Point X="38.312" Y="14.636" />
-        <Point X="25" Y="14.636" />
-      </Path>
-    </AssociationLine>
+    <Position X="6.75" Y="17.75" Width="2.25" />
     <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="38.5" Y="20.543" />
-        <Point X="40.545" Y="20.543" />
-        <Point X="40.545" Y="12.997" />
-        <Point X="14.082" Y="12.997" />
-        <Point X="14.082" Y="25.846" />
-        <Point X="18" Y="25.846" />
+        <Point X="9" Y="18.688" />
+        <Point X="11.125" Y="18.688" />
+        <Point X="11.125" Y="23.75" />
+        <Point X="11.75" Y="23.75" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.096" Y="-0.349" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABgAAAAAAAAAAQAEAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\EventRoleTemplate.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Requirements" />
       <Property Name="EventTemplates" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.Tag">
-    <Position X="21.75" Y="20" Width="2" />
-    <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" FixedFromPoint="true" FixedToPoint="true">
+    <Position X="18.5" Y="22.75" Width="2" />
+    <AssociationLine Name="EventTemplates" Type="Events.Domain.Entities.EventTemplate" FixedFromPoint="true">
       <Path>
-        <Point X="22.25" Y="21.425" />
-        <Point X="22.25" Y="25.106" />
-        <Point X="20.75" Y="25.106" />
+        <Point X="18.5" Y="23.312" />
+        <Point X="14.5" Y="23.312" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.054" Y="-0.288" />
@@ -361,42 +312,28 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventTemplate">
-    <Position X="18" Y="24.5" Width="2.75" />
+    <Position X="11.75" Y="22.75" Width="2.75" />
     <AssociationLine Name="DiscordTemplate" Type="Events.Domain.Entities.DiscordEventChannelTemplate" FixedToPoint="true">
       <Path>
-        <Point X="18.625" Y="26.31" />
-        <Point X="18.625" Y="30" />
+        <Point X="12.125" Y="24.752" />
+        <Point X="12.125" Y="29" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="Tags" Type="Events.Domain.Entities.Tag" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Tags" Type="Events.Domain.Entities.Tag" FixedFromPoint="true">
       <Path>
-        <Point X="20.75" Y="24.971" />
-        <Point X="22.125" Y="24.971" />
-        <Point X="22.125" Y="21.425" />
+        <Point X="14.5" Y="23.125" />
+        <Point X="18.5" Y="23.125" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="EventRoleTemplates" Type="Events.Domain.Entities.EventRoleTemplate" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="18" Y="25.981" />
-        <Point X="13.948" Y="25.981" />
-        <Point X="13.948" Y="12.881" />
-        <Point X="40.67" Y="12.881" />
-        <Point X="40.67" Y="20.679" />
-        <Point X="38.5" Y="20.679" />
+        <Point X="11.75" Y="23.562" />
+        <Point X="11.375" Y="23.562" />
+        <Point X="11.375" Y="18.51" />
+        <Point X="9" Y="18.51" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.05" Y="-0.317" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="18" Y="24.837" />
-        <Point X="14.677" Y="24.837" />
-        <Point X="14.677" Y="15.043" />
-        <Point X="21.75" Y="15.043" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.044" Y="0.106" />
+        <Position X="0.077" Y="0.16" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -409,11 +346,10 @@
     <ShowAsCollectionAssociation>
       <Property Name="Tags" />
       <Property Name="EventRoleTemplates" />
-      <Property Name="Requirements" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.StaticTransaction">
-    <Position X="37.25" Y="24.5" Width="2.25" />
+    <Position X="34.5" Y="29.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAABAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\StaticTransaction.cs</FileName>
@@ -423,12 +359,12 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventRoster">
-    <Position X="32.75" Y="16.5" Width="2" />
+    <Position X="34.75" Y="16.5" Width="2" />
     <AssociationLine Name="Roles" Type="Events.Domain.Entities.EventRole" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="33.25" Y="17.925" />
-        <Point X="33.25" Y="20.312" />
-        <Point X="30.75" Y="20.312" />
+        <Point X="35.25" Y="17.925" />
+        <Point X="35.25" Y="19.812" />
+        <Point X="32" Y="19.812" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.022" Y="-0.249" />
@@ -443,11 +379,50 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventTag">
-    <Position X="23.75" Y="23.5" Width="1.5" />
+    <Position X="21.75" Y="22.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" FixedToPoint="true">
+      <Path>
+        <Point X="23.25" Y="23.188" />
+        <Point X="26" Y="23.188" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.057" Y="-0.314" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Entities\EventTag.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Event" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Events.Domain.Entities.EventParticipationRequirement">
+    <Position X="26" Y="17.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Event" Type="Events.Domain.Entities.Event" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27.312" Y="18.742" />
+        <Point X="27.312" Y="21.676" />
+        <Point X="27.312" Y="21.676" />
+        <Point X="27.312" Y="22.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.731" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\EventParticipationRequirement.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Event" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

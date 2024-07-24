@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Infrastructure.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    [Migration("20240421170717_Initial migration")]
+    [Migration("20240616104118_Initial migration")]
     partial class Initialmigration
     {
         /// <inheritdoc />
@@ -20,70 +20,10 @@ namespace Events.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("EventEventRequirement", b =>
-                {
-                    b.Property<Guid>("EventsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("RequirementsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EventsId", "RequirementsId");
-
-                    b.HasIndex("RequirementsId");
-
-                    b.ToTable("EventEventRequirement");
-                });
-
-            modelBuilder.Entity("EventRequirementEventRole", b =>
-                {
-                    b.Property<Guid>("EventRequirementsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("EventRolesId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EventRequirementsId", "EventRolesId");
-
-                    b.HasIndex("EventRolesId");
-
-                    b.ToTable("EventRequirementEventRole");
-                });
-
-            modelBuilder.Entity("EventRequirementEventRoleTemplate", b =>
-                {
-                    b.Property<Guid>("EventRoleTemplatesId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("RequirementsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EventRoleTemplatesId", "RequirementsId");
-
-                    b.HasIndex("RequirementsId");
-
-                    b.ToTable("EventRequirementEventRoleTemplate");
-                });
-
-            modelBuilder.Entity("EventRequirementEventTemplate", b =>
-                {
-                    b.Property<Guid>("EventTemplatesId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("RequirementsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EventTemplatesId", "RequirementsId");
-
-                    b.HasIndex("RequirementsId");
-
-                    b.ToTable("EventRequirementEventTemplate");
-                });
 
             modelBuilder.Entity("EventRoleEventRoster", b =>
                 {
@@ -100,6 +40,21 @@ namespace Events.Infrastructure.Migrations
                     b.ToTable("EventRoleEventRoster");
                 });
 
+            modelBuilder.Entity("EventRoleParticipationRequirement", b =>
+                {
+                    b.Property<Guid>("EventRolesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ParticipationRequirementsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("EventRolesId", "ParticipationRequirementsId");
+
+                    b.HasIndex("ParticipationRequirementsId");
+
+                    b.ToTable("EventRoleParticipationRequirement");
+                });
+
             modelBuilder.Entity("EventRoleTemplateEventTemplate", b =>
                 {
                     b.Property<Guid>("EventRoleTemplatesId")
@@ -113,6 +68,36 @@ namespace Events.Infrastructure.Migrations
                     b.HasIndex("EventTemplatesId");
 
                     b.ToTable("EventRoleTemplateEventTemplate");
+                });
+
+            modelBuilder.Entity("EventRoleTemplateParticipationRequirement", b =>
+                {
+                    b.Property<Guid>("EventRoleTemplatesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("RequirementsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("EventRoleTemplatesId", "RequirementsId");
+
+                    b.HasIndex("RequirementsId");
+
+                    b.ToTable("EventRoleTemplateParticipationRequirement");
+                });
+
+            modelBuilder.Entity("EventTemplateParticipationRequirement", b =>
+                {
+                    b.Property<Guid>("EventTemplatesId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("RequirementsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("EventTemplatesId", "RequirementsId");
+
+                    b.HasIndex("RequirementsId");
+
+                    b.ToTable("EventTemplateParticipationRequirement");
                 });
 
             modelBuilder.Entity("EventTemplateTag", b =>
@@ -259,7 +244,7 @@ namespace Events.Infrastructure.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ReceivedAt")
+                    b.Property<DateTimeOffset>("ReceivedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("ReceiverId")
@@ -268,7 +253,7 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("SenderId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("SentAt")
+                    b.Property<DateTimeOffset>("SentAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -287,7 +272,8 @@ namespace Events.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<decimal>("DiscordEventId")
                         .HasColumnType("numeric(20,0)");
@@ -295,20 +281,21 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid?>("DiscordTemplateId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTimeOffset>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<TimeSpan>("ExpectedDuration")
                         .HasColumnType("interval");
 
-                    b.Property<DateTime>("LaunchDate")
+                    b.Property<DateTimeOffset>("LaunchDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTimeOffset>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -332,8 +319,6 @@ namespace Events.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ActivityId");
-
                     b.HasIndex("EventId");
 
                     b.ToTable("EventActivities");
@@ -342,21 +327,16 @@ namespace Events.Infrastructure.Migrations
             modelBuilder.Entity("Events.Domain.Entities.EventManager", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Logbook")
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<Guid>("MemberId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.ToTable("EventManagemers");
                 });
@@ -373,6 +353,12 @@ namespace Events.Infrastructure.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EventRoleId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("ManagerNotes")
                         .HasColumnType("text");
 
@@ -382,36 +368,26 @@ namespace Events.Infrastructure.Migrations
                     b.Property<string>("ParticipantNotes")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ChannelId");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("EventId");
 
                     b.ToTable("EventParticipations");
                 });
 
-            modelBuilder.Entity("Events.Domain.Entities.EventRequirement", b =>
+            modelBuilder.Entity("Events.Domain.Entities.EventParticipationRequirement", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("IsGameHandleVerificationRequired")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid?>("RequiredLicenseId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("RequiredRoleId")
+                    b.Property<Guid>("ParticipationRequirementId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.ToTable("EventRequirements");
+                    b.ToTable("EventParticipationRequirements");
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventRole", b =>
@@ -423,9 +399,6 @@ namespace Events.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("EventId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -434,8 +407,6 @@ namespace Events.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.ToTable("EventRoles");
                 });
@@ -482,18 +453,12 @@ namespace Events.Infrastructure.Migrations
             modelBuilder.Entity("Events.Domain.Entities.EventTag", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("TagId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.ToTable("EventTag");
                 });
@@ -517,7 +482,7 @@ namespace Events.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTimeOffset>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -525,6 +490,26 @@ namespace Events.Infrastructure.Migrations
                     b.HasIndex("DiscordTemplateId");
 
                     b.ToTable("EventTemplates");
+                });
+
+            modelBuilder.Entity("Events.Domain.Entities.ParticipationRequirement", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("IsGameHandleVerificationRequired")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("RequiredLicenseId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("RequiredRoleId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParticipationRequirements");
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.StaticTransaction", b =>
@@ -567,66 +552,6 @@ namespace Events.Infrastructure.Migrations
                     b.ToTable("EventTags");
                 });
 
-            modelBuilder.Entity("EventEventRequirement", b =>
-                {
-                    b.HasOne("Events.Domain.Entities.Event", null)
-                        .WithMany()
-                        .HasForeignKey("EventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Events.Domain.Entities.EventRequirement", null)
-                        .WithMany()
-                        .HasForeignKey("RequirementsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EventRequirementEventRole", b =>
-                {
-                    b.HasOne("Events.Domain.Entities.EventRequirement", null)
-                        .WithMany()
-                        .HasForeignKey("EventRequirementsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Events.Domain.Entities.EventRole", null)
-                        .WithMany()
-                        .HasForeignKey("EventRolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EventRequirementEventRoleTemplate", b =>
-                {
-                    b.HasOne("Events.Domain.Entities.EventRoleTemplate", null)
-                        .WithMany()
-                        .HasForeignKey("EventRoleTemplatesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Events.Domain.Entities.EventRequirement", null)
-                        .WithMany()
-                        .HasForeignKey("RequirementsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EventRequirementEventTemplate", b =>
-                {
-                    b.HasOne("Events.Domain.Entities.EventTemplate", null)
-                        .WithMany()
-                        .HasForeignKey("EventTemplatesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Events.Domain.Entities.EventRequirement", null)
-                        .WithMany()
-                        .HasForeignKey("RequirementsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("EventRoleEventRoster", b =>
                 {
                     b.HasOne("Events.Domain.Entities.EventRole", null)
@@ -642,6 +567,21 @@ namespace Events.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EventRoleParticipationRequirement", b =>
+                {
+                    b.HasOne("Events.Domain.Entities.EventRole", null)
+                        .WithMany()
+                        .HasForeignKey("EventRolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Events.Domain.Entities.ParticipationRequirement", null)
+                        .WithMany()
+                        .HasForeignKey("ParticipationRequirementsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("EventRoleTemplateEventTemplate", b =>
                 {
                     b.HasOne("Events.Domain.Entities.EventRoleTemplate", null)
@@ -653,6 +593,36 @@ namespace Events.Infrastructure.Migrations
                     b.HasOne("Events.Domain.Entities.EventTemplate", null)
                         .WithMany()
                         .HasForeignKey("EventTemplatesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EventRoleTemplateParticipationRequirement", b =>
+                {
+                    b.HasOne("Events.Domain.Entities.EventRoleTemplate", null)
+                        .WithMany()
+                        .HasForeignKey("EventRoleTemplatesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Events.Domain.Entities.ParticipationRequirement", null)
+                        .WithMany()
+                        .HasForeignKey("RequirementsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EventTemplateParticipationRequirement", b =>
+                {
+                    b.HasOne("Events.Domain.Entities.EventTemplate", null)
+                        .WithMany()
+                        .HasForeignKey("EventTemplatesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Events.Domain.Entities.ParticipationRequirement", null)
+                        .WithMany()
+                        .HasForeignKey("RequirementsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -740,19 +710,11 @@ namespace Events.Infrastructure.Migrations
 
             modelBuilder.Entity("Events.Domain.Entities.EventActivity", b =>
                 {
-                    b.HasOne("Events.Domain.Entities.Activity", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Events.Domain.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Activity");
 
                     b.Navigation("Event");
                 });
@@ -761,7 +723,7 @@ namespace Events.Infrastructure.Migrations
                 {
                     b.HasOne("Events.Domain.Entities.Event", "Event")
                         .WithMany("Managers")
-                        .HasForeignKey("EventId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -774,22 +736,22 @@ namespace Events.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("ChannelId");
 
-                    b.HasOne("Events.Domain.Entities.EventRole", "Role")
-                        .WithMany("Participations")
-                        .HasForeignKey("RoleId")
+                    b.HasOne("Events.Domain.Entities.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Channel");
 
-                    b.Navigation("Role");
+                    b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("Events.Domain.Entities.EventRole", b =>
+            modelBuilder.Entity("Events.Domain.Entities.EventParticipationRequirement", b =>
                 {
                     b.HasOne("Events.Domain.Entities.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId")
+                        .WithMany("Requirements")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -798,11 +760,13 @@ namespace Events.Infrastructure.Migrations
 
             modelBuilder.Entity("Events.Domain.Entities.EventTag", b =>
                 {
-                    b.HasOne("Events.Domain.Entities.Event", null)
+                    b.HasOne("Events.Domain.Entities.Event", "Event")
                         .WithMany("Tags")
-                        .HasForeignKey("EventId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventTemplate", b =>
@@ -829,12 +793,9 @@ namespace Events.Infrastructure.Migrations
                 {
                     b.Navigation("Managers");
 
-                    b.Navigation("Tags");
-                });
+                    b.Navigation("Requirements");
 
-            modelBuilder.Entity("Events.Domain.Entities.EventRole", b =>
-                {
-                    b.Navigation("Participations");
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

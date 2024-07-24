@@ -1,6 +1,4 @@
-﻿using Events.Application.Contracts.Services;
-using Events.Application.Contracts.UseCases;
-using Events.Application.Contracts.UseCases.EventManagers;
+﻿using Events.Application.Contracts.UseCases.EventManagers;
 using Events.Application.Contracts.UseCases.Events;
 using Events.Application.UseCases;
 using Events.Application.UseCases.EventManagers;
@@ -20,7 +18,8 @@ namespace Events.Application
         /// <param name="aServiceList"></param>
         public static void RegisterApplicationServices(this IServiceCollection aServiceList)
         {
-            aServiceList.AddScoped<IEventsService, EventsService>();
+            aServiceList.AddScoped<IListEventsService, ListEventsService>();
+            aServiceList.AddScoped<IListEventManagersService, ListEventManagersService>();
             aServiceList.AddScoped<IAddEventManagersService, AddEventManagersService>();
             aServiceList.AddScoped<IDeleteEventManagersService, DeleteEventManagersService>();
             aServiceList.AddScoped<ICreateEventService, CreateEventService>();

@@ -2,10 +2,11 @@
 namespace Events.Application.DTOs
 {
     public record EventDTO(
+        Guid Id,
         string Name,
         string? Description,
         TimeSpan ExpectedDuration,
-        DateTime StartDate,
-        DateTime LaunchDate,
-        DateTime EndDate);
+        DateTimeOffset StartDate,
+        DateTimeOffset LaunchDate,
+        DateTimeOffset EndDate);
 }

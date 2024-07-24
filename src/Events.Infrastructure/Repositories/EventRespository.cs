@@ -12,6 +12,16 @@ namespace Events.Infrastructure.Repositories
         : RepositoryBase<EventRespository, EventsDbContext>(aContext, aLogger), IEventRepository, ISortRepository
     {
 
+        public async Task<IHttpResult<Event>> GetByIdAsync(
+            Guid aId, CancellationToken aCancellationToken = default)
+        => await TryQueryAsync(async (aCancellationToken) =>
+        {
+            return await  _context.Events
+                .Include(e => e.Managers)
+                .AsQueryable()
+                .FirstAsync(anEvent => anEvent.Id == aId, cancellationToken: aCancellationToken);
+        }, aCancellationToken);
+
         public async Task<IHttpResult<IEnumerable<Event>>> GetEventListAsync(
             int aPage, int aPageSize,
             string aSortBy,
@@ -19,7 +29,7 @@ namespace Events.Infrastructure.Repositories
         => await TryQueryAsync(async (aCancellationToken) =>
         {
             var lQuery = _context.Events
-            .AsQueryable();
+            .Include(e => e.Managers).AsQueryable();
 
             lQuery = ISortRepository.ApplySorting(lQuery, aSortBy);
 

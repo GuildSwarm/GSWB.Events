@@ -1,11 +1,10 @@
 ﻿using Common.Application.DTOs.Events;
-using Events.Application.DTOs;
 using TGF.Common.ROP.HttpResult;
 
-namespace Events.Application.Contracts.UseCases
+namespace Events.Application.Contracts.UseCases.EventManagers
 {
     public interface IDeleteEventManagersService
     {
-        Task<IHttpResult<EventDTO>> DeleteManagers(EventManagersDTO aAddEventManagersDTO, CancellationToken aCancellationToken = default);
+        Task<IHttpResult<IEnumerable<EventManagerDetailDTO>>> DeleteManagers(Guid aEventId, string aAccessToken, IEnumerable<Guid> aMemberIdList, CancellationToken aCancellationToken = default);
     }
 }
