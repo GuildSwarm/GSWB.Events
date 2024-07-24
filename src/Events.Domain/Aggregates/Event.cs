@@ -1,5 +1,7 @@
-﻿using Events.Domain.Validation;
+﻿using Events.Domain.Errors;
+using Events.Domain.Validation;
 using Events.Domain.Validation.Tag;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.Result;
@@ -37,9 +39,11 @@ namespace Events.Domain.Entities
         }
 
         public IHttpResult<IEnumerable<EventManager>> DeleteManagers(IEnumerable<Guid> aMemberIdList)
-        => Result.SuccessHttp(aMemberIdList)
-            .Map(memberIdList => Managers.Where(manager => memberIdList.Contains(manager.MemberId)))
-            .Tap(managerList => Managers = Managers.Except(managerList).ToList());
+        => (Managers.Count == 1 && aMemberIdList.Any(memberId => Managers.Any(manager => manager.MemberId == memberId))
+            ? Result.Failure<IEnumerable<EventManager>>(DomainErrors.EventManager.DeletedLastManager) 
+            : Result.SuccessHttp(Managers as IEnumerable<EventManager>)
+        ).Map(memberIdList => Managers.Where(manager => aMemberIdList.Contains(manager.MemberId)))
+        .Tap(managerList => Managers = Managers.Except(managerList).ToList());
         #endregion
 
         #region Tags

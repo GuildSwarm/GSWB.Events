@@ -7,7 +7,7 @@ using TGF.CA.Application.DTOs;
 using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.Result;
 
-namespace Events.Application.UseCases
+namespace Events.Application.UseCases.Events
 {
     public class ListEventsService(
         IEventRepository aEventRepository) : IListEventsService
