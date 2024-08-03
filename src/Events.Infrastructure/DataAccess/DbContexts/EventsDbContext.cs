@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Events.Domain.Entities;
+using TGF.CA.Infrastructure.DB.DbContext;
 
 namespace Events.Infrastructure.DataAccess.DbContexts
 {
-    public class EventsDbContext(DbContextOptions<EventsDbContext> aOptions) : DbContext(aOptions)
+    public class EventsDbContext(DbContextOptions<EventsDbContext> aOptions) : EntitiesDbContext<EventsDbContext>(aOptions)
     {
         public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<ActivityParticipation> ActivityParticipations { get; set; }
