@@ -40,16 +40,6 @@ namespace Events.Infrastructure.Repositories
 
         }, aCancellationToken);
 
-
-        public async Task<IHttpResult<Event>> Add(Event aNewEvent, CancellationToken aCancellationToken = default)
-            => await TryCommandAsync(() => _context.Events.Add(aNewEvent).Entity, aCancellationToken);
-
-        public async Task<IHttpResult<Event>> Update(Event aEvent, CancellationToken aCancellationToken = default)
-            => await TryCommandAsync(() => _context.Events.Update(aEvent).Entity, aCancellationToken);
-
-        public async Task<IHttpResult<Event>> Delete(Event aEventToDelete, CancellationToken aCancellationToken = default)
-            => await TryCommandAsync(() => _context.Events.Remove(aEventToDelete).Entity, aCancellationToken);
-
         public async Task<IHttpResult<int>> GetCountAsync(CancellationToken aCancellationToken = default)
         => await TryQueryAsync(async (aCancellationToken)
             => await _context.Events.CountAsync(aCancellationToken)

@@ -29,27 +29,6 @@ namespace Events.Application.Contracts.Repositories
             CancellationToken aCancellationToken = default);
 
         /// <summary>
-        /// Adds a new event to the repository.
-        /// </summary>
-        /// <param name="aNewEvent">The event to add.</param>
-        /// <returns>The added event.</returns>
-        Task<IHttpResult<Event>> Add(Event aNewEvent, CancellationToken aCancellationToken = default);
-
-        /// <summary>
-        /// Deletes a specified event from the repository.
-        /// </summary>
-        /// <param name="aEventToDelete">The event to delete.</param>
-        /// <returns>The deleted event or Error</returns>
-        Task<IHttpResult<Event>> Delete(Event aEventToDelete, CancellationToken aCancellationToken = default);
-
-        /// <summary>
-        /// Updates a specified event in the repository.
-        /// </summary>
-        /// <param name="aEvent">The event to update.</param>
-        /// <returns>The updated event or Error.</returns>
-        Task<IHttpResult<Event>> Update(Event aEvent, CancellationToken aCancellationToken = default);
-
-        /// <summary>
         /// Get the number of registered events.
         /// </summary>
         /// <returns>Returns the number registered guild events or Error.</returns>

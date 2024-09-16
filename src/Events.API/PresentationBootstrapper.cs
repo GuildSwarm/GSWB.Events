@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using System.Reflection;
+﻿using System.Reflection;
 using TGF.CA.Application;
 using TGF.CA.Presentation.Middleware;
 using TGF.CA.Presentation.MinimalAPI;

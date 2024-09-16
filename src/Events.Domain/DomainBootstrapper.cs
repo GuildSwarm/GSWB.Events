@@ -1,5 +1,4 @@
-﻿using Events.Domain.Contracts.Services;
-using Events.Domain.Validation;
+﻿using Events.Domain.Validation;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 

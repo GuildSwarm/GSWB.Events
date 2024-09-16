@@ -40,7 +40,7 @@ namespace Events.Domain.Entities
 
         public IHttpResult<IEnumerable<EventManager>> DeleteManagers(IEnumerable<Guid> aMemberIdList)
         => (Managers.Count == 1 && aMemberIdList.Any(memberId => Managers.Any(manager => manager.MemberId == memberId))
-            ? Result.Failure<IEnumerable<EventManager>>(DomainErrors.EventManager.DeletedLastManager) 
+            ? Result.Failure<IEnumerable<EventManager>>(DomainErrors.Validation.EventManager.DeletedLastManager) 
             : Result.SuccessHttp(Managers as IEnumerable<EventManager>)
         ).Map(memberIdList => Managers.Where(manager => aMemberIdList.Contains(manager.MemberId)))
         .Tap(managerList => Managers = Managers.Except(managerList).ToList());
