@@ -9,19 +9,8 @@ using TGF.Common.ROP.HttpResult;
 namespace Events.Infrastructure.Repositories
 {
     public class EventRespository(EventsDbContext aContext, ILogger<EventRespository> aLogger)
-        : RepositoryBase<EventRespository, EventsDbContext>(aContext, aLogger), IEventRepository, ISortRepository
+        : RepositoryBase<EventRespository, EventsDbContext, Event, Guid>(aContext, aLogger), IEventRepository, ISortRepository
     {
-
-        public async Task<IHttpResult<Event>> GetByIdAsync(
-            Guid aId, CancellationToken aCancellationToken = default)
-        => await TryQueryAsync(async (aCancellationToken) =>
-        {
-            return await  _context.Events
-                .Include(e => e.Managers)
-                .AsQueryable()
-                .FirstAsync(anEvent => anEvent.Id == aId, cancellationToken: aCancellationToken);
-        }, aCancellationToken);
-
         public async Task<IHttpResult<IEnumerable<Event>>> GetEventListAsync(
             int aPage, int aPageSize,
             string aSortBy,
@@ -37,6 +26,15 @@ namespace Events.Infrastructure.Repositories
                 .Skip((aPage - 1) * aPageSize)
                 .Take(aPageSize)
                 .ToListAsync(aCancellationToken) as IEnumerable<Event>;
+
+        }, aCancellationToken);
+
+        public async Task<IHttpResult<Event>> GetWithManagersAsync(Guid eventId, CancellationToken aCancellationToken = default)
+        => await TryQueryAsync(async (aCancellationToken) =>
+        {
+            return await _context.Events
+            .Include(e => e.Managers)
+            .FirstAsync(anEvent => anEvent.Id == eventId);
 
         }, aCancellationToken);
 

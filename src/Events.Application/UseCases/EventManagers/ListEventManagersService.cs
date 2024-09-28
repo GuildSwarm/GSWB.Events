@@ -16,7 +16,7 @@ namespace Events.Application.UseCases.EventManagers
         public async Task<IHttpResult<IEnumerable<EventManagerDetailDTO>>> ListManagers(Guid aEventId, string aAccessToken, CancellationToken aCancellationToken = default)
         {
             var lManagerList = await Result.CancellationTokenResult(aCancellationToken)
-                .Bind(_ => aEventRepository.GetByIdAsync(aEventId))
+                .Bind(_ => aEventRepository.GetWithManagersAsync(aEventId))
                 .Map(anEvent => anEvent.Managers);
 
             return await lManagerList

@@ -69,15 +69,15 @@ namespace Events.Domain.Entities
             .Tap(eventTagList => Tags = Tags.Except(eventTagList).ToList());
         #endregion
 
-        // Add a requirement to the event.
-        public async Task<IHttpResult<Event>> AddRequirementsAsync(IEnumerable<Guid> aRequirementIdList)
-        {
-            aRequirementIdList.Where(participationRequirementId => Requirements.Any(requirement => requirement.ParticipationRequirementId == participationRequirementId))
-            .ToList()
-            .ForEach(requirementId => Requirements.Add(new EventParticipationRequirement() { Event = this, ParticipationRequirementId = requirementId }));
+        // Add a requirement to the event. WIP
+        //public async Task<IHttpResult<Event>> AddRequirementsAsync(IEnumerable<Guid> aRequirementIdList)
+        //{
+        //    aRequirementIdList.Where(participationRequirementId => Requirements.Any(requirement => requirement.ParticipationRequirementId == participationRequirementId))
+        //    .ToList()
+        //    .ForEach(requirementId => Requirements.Add(new EventParticipationRequirement() { Event = this, ParticipationRequirementId = requirementId }));
 
-            return Result.SuccessHttp(this);
-        }
+        //    return Result.SuccessHttp(this);
+        //}
 
     }
 }

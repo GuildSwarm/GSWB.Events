@@ -19,7 +19,7 @@ namespace Events.Domain.Validation.Tag
             RuleFor(tagIdList => tagIdList).MustAsync(IsGetByIdListSuccess);
         }
         private async Task<bool> IsGetByIdListSuccess(IEnumerable<Guid> aTagIdList, CancellationToken aCancellationToken = default)
-        => (await _tagRepository.GetByIdListAsync<Entities.Tag, Guid>(aTagIdList, aCancellationToken)).IsSuccess;
+        => (await _tagRepository.GetByIdListAsync(aTagIdList, aCancellationToken)).IsSuccess;
 
     }
 }

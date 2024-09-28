@@ -15,7 +15,7 @@ namespace Events.Application.UseCases.EventManagers
         public async Task<IHttpResult<IEnumerable<EventManagerDetailDTO>>> DeleteManagers(Guid aEventId, string aAccessToken, IEnumerable<Guid> aMemberIdList, CancellationToken aCancellationToken = default)
         {
             var lEventResult = await Result.CancellationTokenResult(aCancellationToken)
-                .Bind(_ => aEventRepository.GetByIdAsync(aEventId));
+                .Bind(_ => aEventRepository.GetWithManagersAsync(aEventId));
 
             var lAfterDeleteManagersResult = await lEventResult.Bind(anEvent => anEvent.DeleteManagers(aMemberIdList))
                 .Bind(_ => aEventRepository.UpdateAsync(lEventResult.Value))

@@ -13,7 +13,7 @@ namespace Events.Infrastructure.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
     [Migration("20240803084440_timestamps")]
-    partial class timestamps
+    partial class Timestamps
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
