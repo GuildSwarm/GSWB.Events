@@ -11,7 +11,7 @@ namespace Events.Application.Contracts.UseCases.Events
 {
     public interface ICreateEventService
     {
-        Task<IHttpResult<EventDTO>> CreateEvent(string aDiscordMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default);
+        Task<IHttpResult<EventDTO>> CreateEvent(Guid aMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default);
 
     }
 }

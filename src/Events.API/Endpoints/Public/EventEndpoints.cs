@@ -13,6 +13,7 @@ using Common.Application.DTOs.Events;
 using Events.Application.Contracts.UseCases.Events;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Common.Infrastructure.Security;
 
 namespace Events.API.Endpoints.Public
 {
@@ -50,7 +51,7 @@ namespace Events.API.Endpoints.Public
         {
             return await Result.CancellationTokenResult(aCancellationToken)
                 .Validate(aClaimsPrincipal, aTokenClaimsValidator)
-                .Bind(discodMemberId => aCreateEventService.CreateEvent(aClaimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier)!, aCreateEventDto, aCancellationToken))
+                .Bind(discodMemberId => aCreateEventService.CreateEvent(Guid.Parse(aClaimsPrincipal.FindFirstValue(GuildSwarmClaims.MemberId)!), aCreateEventDto, aCancellationToken))
                 .ToIResult();
         }
 

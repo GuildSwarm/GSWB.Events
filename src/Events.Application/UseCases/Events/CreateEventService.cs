@@ -15,10 +15,10 @@ namespace Events.Application.UseCases.Events
     public class CreateEventService(IEventRepository aEventRepository, IMembersCommunicationService aMembersCommunicationService, TagIdListValidator aTagIdListValidator, EventManagerValidator aEventManagerValidator)
         : ICreateEventService
     {
-        public async Task<IHttpResult<EventDTO>> CreateEvent(string aDiscordMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
+        public async Task<IHttpResult<EventDTO>> CreateEvent(Guid aMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
         {
             var lMemberCreatorResult = await Result.CancellationTokenResult(aCancellationToken)
-                .Bind( _ => aMembersCommunicationService.GetExistingMember(Convert.ToUInt64(aDiscordMembeIdCreator), aCancellationToken));
+                .Bind( _ => aMembersCommunicationService.GetExistingMember(aMembeIdCreator, aCancellationToken));
 
             var lNewEventResult = await lMemberCreatorResult
                 .Map(_ => GetNewEventFromEventInformation(aCreateEventDTO.EventInformation));
