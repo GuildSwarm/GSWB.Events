@@ -7,7 +7,7 @@ using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.EventManagers
 {
-    public class DeleteEventManagersService(
+    public class DeleteEventManagers(
         IEventRepository aEventRepository,
         IMembersCommunicationService aMembersCommunicationService)
     : IDeleteEventManagersService

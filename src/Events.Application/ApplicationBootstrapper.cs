@@ -19,9 +19,9 @@ namespace Events.Application
         public static void RegisterApplicationServices(this IServiceCollection aServiceList)
         {
             aServiceList.AddScoped<IListEventsService, ListEventsService>();
-            aServiceList.AddScoped<IListEventManagersService, ListEventManagersService>();
-            aServiceList.AddScoped<IAddEventManagersService, AddEventManagersService>();
-            aServiceList.AddScoped<IDeleteEventManagersService, DeleteEventManagersService>();
+            aServiceList.AddScoped<IListEventManagersService, ListEventManagers>();
+            aServiceList.AddScoped<IAddEventManagersService, AddEventManagers>();
+            aServiceList.AddScoped<IDeleteEventManagersService, DeleteEventManagers>();
             aServiceList.AddScoped<ICreateEventService, CreateEventService>();
 
         }

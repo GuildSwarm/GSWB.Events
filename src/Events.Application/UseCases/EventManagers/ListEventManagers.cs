@@ -8,7 +8,7 @@ using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.EventManagers
 {
-    public class ListEventManagersService(
+    public class ListEventManagers(
         IEventRepository aEventRepository,
         IMembersCommunicationService aMembersCommunicationService)
     : IListEventManagersService
