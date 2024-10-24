@@ -1,7 +1,5 @@
 ﻿using Events.Application.DTOs;
-using Common.Infrastructure.Communication.ApiRoutes;
 using Common.Domain.ValueObjects;
-using Common.Presentation.Validation;
 using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;
 using TGF.CA.Presentation;
 using TGF.CA.Presentation.Middleware;
@@ -14,6 +12,9 @@ using Events.Application.Contracts.UseCases.Events;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Common.Infrastructure.Security;
+using TGF.CA.Application.Validation;
+using Common.Application.Validation;
+using Common.Application.Communication.Routing;
 
 namespace Events.API.Endpoints.Public
 {
@@ -30,7 +31,7 @@ namespace Events.API.Endpoints.Public
 
             aWebApplication.MapGet(EventsApiRoutes.events, Get_EventList)
                 .RequirePermissions(PermissionsEnum.AccessEvents)
-                .SetResponseMetadata<PaginatedListDTO<EventDTO>>(200)
+                .SetResponseMetadata<PagedListDTO<EventDTO>>(200)
                 .ProducesValidationProblem();
         }
 
@@ -56,7 +57,7 @@ namespace Events.API.Endpoints.Public
         }
 
         /// <summary>
-        /// Get the list of events(<see cref="PaginatedListDTO{T}"/>) under filtering and pagination conditions specified in the request's query parameters and sorted by a given column name.
+        /// Get the list of events(<see cref="PagedListDTO{T}"/>) under filtering and pagination conditions specified in the request's query parameters and sorted by a given column name.
         /// </summary>
         private async Task<IResult> Get_EventList(IListEventsService aListEventsService, PaginationValidator aPaginationValidator,
             int page = 1, int pageSize = 20, string sortBy = nameof(EventDTO.Name),

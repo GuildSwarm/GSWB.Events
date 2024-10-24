@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using TGF.CA.Application;
 using TGF.CA.Presentation.Middleware;
 using TGF.CA.Presentation.MinimalAPI;
 using TGF.CA.Presentation;
 using Common.Presentation;
+using TGF.CA.Application.Contracts.Routing;
 
 namespace Events.API
 {

@@ -14,7 +14,7 @@ namespace Events.Application.Contracts.UseCases.Events
         /// <param name="aSortBy"></param>
         /// <param name="aCancellationToken"></param>
         /// <returns></returns>
-        public Task<IHttpResult<PaginatedListDTO<EventDTO>>> ListEvents(
+        public Task<IHttpResult<PagedListDTO<EventDTO>>> ListEvents(
             int aPage, int aPageSize,
             string aSortBy,
             CancellationToken aCancellationToken = default);

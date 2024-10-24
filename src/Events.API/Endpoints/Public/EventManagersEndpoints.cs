@@ -1,6 +1,6 @@
-﻿using Common.Application.DTOs.Events;
+﻿using Common.Application.Communication.Routing;
+using Common.Application.DTOs.Events;
 using Common.Domain.ValueObjects;
-using Common.Infrastructure.Communication.ApiRoutes;
 using Events.Application.Contracts.UseCases.EventManagers;
 using Microsoft.AspNetCore.Mvc;
 using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;

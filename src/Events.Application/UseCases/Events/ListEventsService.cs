@@ -15,7 +15,7 @@ namespace Events.Application.UseCases.Events
 
         #region IEventService
 
-        public async Task<IHttpResult<PaginatedListDTO<EventDTO>>> ListEvents(
+        public async Task<IHttpResult<PagedListDTO<EventDTO>>> ListEvents(
             int aPage, int aPageSize,
             string aSortBy,
             CancellationToken aCancellationToken = default)
@@ -27,9 +27,9 @@ namespace Events.Application.UseCases.Events
         #endregion
 
         #region Private 
-        private async Task<IHttpResult<PaginatedListDTO<EventDTO>>> GetPaginatedEventListDTO(IEnumerable<Event> aEventList, int aCurrentPage, int aPageSize)
+        private async Task<IHttpResult<PagedListDTO<EventDTO>>> GetPaginatedEventListDTO(IEnumerable<Event> aEventList, int aCurrentPage, int aPageSize)
         => await aEventRepository.GetCountAsync()
-            .Map(EventCount => new PaginatedListDTO<EventDTO>(aCurrentPage, (int)Math.Ceiling((double)EventCount / aPageSize), aPageSize, EventCount, aEventList.Select(Event => Event.ToDto()).ToArray()));
+            .Map(EventCount => new PagedListDTO<EventDTO>(aCurrentPage, (int)Math.Ceiling((double)EventCount / aPageSize), aPageSize, EventCount, aEventList.Select(Event => Event.ToDto()).ToArray()));
         #endregion
     }
 }
