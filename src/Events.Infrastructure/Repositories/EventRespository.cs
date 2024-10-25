@@ -38,10 +38,5 @@ namespace Events.Infrastructure.Repositories
 
         }, aCancellationToken);
 
-        public async Task<IHttpResult<int>> GetCountAsync(CancellationToken aCancellationToken = default)
-        => await TryQueryAsync(async (aCancellationToken)
-            => await _context.Events.CountAsync(aCancellationToken)
-        , aCancellationToken);
-
     }
 }

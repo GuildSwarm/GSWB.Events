@@ -29,11 +29,5 @@ namespace Events.Application.Contracts.Repositories
         /// <returns></returns>
         public Task<IHttpResult<Event>> GetWithManagersAsync(Guid eventId, CancellationToken aCancellationToken = default);
 
-        /// <summary>
-        /// Get the number of registered events.
-        /// </summary>
-        /// <returns>Returns the number registered guild events or Error.</returns>
-        Task<IHttpResult<int>> GetCountAsync(CancellationToken aCancellationToken = default);
-
     }
 }
