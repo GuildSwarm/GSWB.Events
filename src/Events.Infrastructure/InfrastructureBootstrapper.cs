@@ -2,15 +2,14 @@
 using Common.Infrastructure;
 using Events.Infrastructure.DataAccess.DbContexts;
 using TGF.CA.Infrastructure.DB.PostgreSQL;
-using Events.Application.Contracts.Repositories;
-using Events.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using TGF.CA.Infrastructure;
 using Events.Domain.Contracts.Services;
 using Events.Infrastructure.Services;
-using Events.Domain.Contracts.Repositories;
 using Common.Application.Contracts.Services;
 using Common.Infrastructure.Communication.HTTP;
+using System.Reflection;
+using TGF.CA.Infrastructure.DB.Repository;
 
 namespace Events.Infrastructure
 {
@@ -30,8 +29,7 @@ namespace Events.Infrastructure
             await aWebApplicationBuilder.ConfigureCommonInfrastructureAsync();
 
             await aWebApplicationBuilder.Services.AddPostgreSQL<EventsDbContext>("EventsDb");
-            aWebApplicationBuilder.Services.AddScoped<IEventRepository, EventRespository>();
-            aWebApplicationBuilder.Services.AddScoped<ITagRepository, TagRepository>();
+            aWebApplicationBuilder.Services.AddRepositories(Assembly.GetExecutingAssembly());
 
             aWebApplicationBuilder.Services.AddScoped<IExternalPermissionsService, ExternalPermissionsService>();
             aWebApplicationBuilder.Services.AddScoped<IMembersCommunicationService, MembersCommunicationService>();
