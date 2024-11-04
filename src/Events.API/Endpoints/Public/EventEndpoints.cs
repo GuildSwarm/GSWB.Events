@@ -13,7 +13,6 @@ using Common.Infrastructure.Security;
 using TGF.CA.Application.Validation;
 using Common.Application.Validation;
 using Common.Application.Communication.Routing;
-using BGSFX.CA.Presentation.MinimalAPI;
 using TGF.CA.Infrastructure.Identity.Authorization.Permissions;
 
 namespace Events.API.Endpoints.Public

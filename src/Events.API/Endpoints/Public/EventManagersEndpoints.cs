@@ -1,5 +1,4 @@
-﻿using BGSFX.CA.Presentation.MinimalAPI;
-using Common.Application.Communication.Routing;
+﻿using Common.Application.Communication.Routing;
 using Common.Application.DTOs.Events;
 using Common.Domain.ValueObjects;
 using Events.Application.Contracts.UseCases.EventManagers;
