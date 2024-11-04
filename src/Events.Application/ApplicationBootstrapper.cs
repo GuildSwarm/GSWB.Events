@@ -1,6 +1,6 @@
-﻿using Events.Application.Contracts.UseCases.EventManagers;
+﻿using Common.Application;
+using Events.Application.Contracts.UseCases.EventManagers;
 using Events.Application.Contracts.UseCases.Events;
-using Events.Application.UseCases;
 using Events.Application.UseCases.EventManagers;
 using Events.Application.UseCases.Events;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +18,7 @@ namespace Events.Application
         /// <param name="aServiceList"></param>
         public static void RegisterApplicationServices(this IServiceCollection aServiceList)
         {
+            aServiceList.RegisterCommonApplicationServices();
             aServiceList.AddScoped<IListEventsService, ListEventsService>();
             aServiceList.AddScoped<IListEventManagersService, ListEventManagers>();
             aServiceList.AddScoped<IAddEventManagersService, AddEventManagers>();

@@ -9,7 +9,7 @@ using TGF.Common.ROP.HttpResult;
 namespace Events.Infrastructure.Repositories
 {
     public class EventRepository(EventsDbContext aContext, ILogger<EventRepository> aLogger)
-        : RepositoryBase<EventRepository, EventsDbContext, Event, Guid>(aContext, aLogger), IEventRepository, ISortRepository
+        : EntityRepository<EventRepository, EventsDbContext, Event, Guid>(aContext, aLogger), IEventRepository, ISortRepository
     {
         public async Task<IHttpResult<IEnumerable<Event>>> GetEventListAsync(
             int aPage, int aPageSize,

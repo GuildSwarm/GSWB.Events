@@ -1,5 +1,5 @@
 ﻿using Events.Domain.Entities;
-using TGF.CA.Domain.Contracts.Repositories;
+using TGF.CA.Domain.Contracts.Repositories.EntityRepository;
 using TGF.Common.ROP.HttpResult;
 
 namespace Events.Application.Contracts.Repositories
@@ -7,7 +7,7 @@ namespace Events.Application.Contracts.Repositories
     /// <summary>
     /// Provides an interface for repository operations related to the<see cref="Event"/> entity.
     /// </summary>
-    public interface IEventRepository : IRepositoryBase<Event, Guid>
+    public interface IEventRepository : IEntitiyRepository<Event, Guid>
     {
 
         /// <summary>
