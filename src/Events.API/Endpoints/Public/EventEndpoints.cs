@@ -1,10 +1,8 @@
 ﻿using Events.Application.DTOs;
 using Common.Domain.ValueObjects;
-using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.CA.Presentation;
-using TGF.CA.Presentation.Middleware;
 using TGF.CA.Presentation.MinimalAPI;
-using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.Result;
 using TGF.CA.Application.DTOs;
 using Common.Application.DTOs.Events;
@@ -15,11 +13,13 @@ using Common.Infrastructure.Security;
 using TGF.CA.Application.Validation;
 using Common.Application.Validation;
 using Common.Application.Communication.Routing;
+using BGSFX.CA.Presentation.MinimalAPI;
+using TGF.CA.Infrastructure.Identity.Authorization.Permissions;
 
 namespace Events.API.Endpoints.Public
 {
     /// Collection of endpoints to run over the whole guild's member list.
-    public class EventEndpoints : IEndpointDefinition
+    public class EventEndpoints : IEndpointsDefinition
     {
         /// <inheritdoc/>
         public void DefineEndpoints(WebApplication aWebApplication)

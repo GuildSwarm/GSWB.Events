@@ -3,6 +3,7 @@ using TGF.Common.ROP.Errors;
 using Events.Domain.Errors;
 using Events.Domain.Contracts.Services;
 using TGF.Common.ROP.HttpResult;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 
 namespace Events.Domain.Validation
 {

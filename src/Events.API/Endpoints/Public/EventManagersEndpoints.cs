@@ -1,13 +1,13 @@
-﻿using Common.Application.Communication.Routing;
+﻿using BGSFX.CA.Presentation.MinimalAPI;
+using Common.Application.Communication.Routing;
 using Common.Application.DTOs.Events;
 using Common.Domain.ValueObjects;
 using Events.Application.Contracts.UseCases.EventManagers;
 using Microsoft.AspNetCore.Mvc;
-using TGF.CA.Infrastructure.Security.Identity.Authorization.Permissions;
+using TGF.CA.Infrastructure.Identity.Authorization.Permissions;
 using TGF.CA.Presentation;
-using TGF.CA.Presentation.Middleware;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.CA.Presentation.MinimalAPI;
-using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.Result;
 
 namespace Events.API.Endpoints.Public
@@ -15,7 +15,7 @@ namespace Events.API.Endpoints.Public
     /// <summary>
     /// 
     /// </summary>
-    public class EventManagersEndpoints : IEndpointDefinition
+    public class EventManagersEndpoints : IEndpointsDefinition
     {
         /// <inheritdoc/>
         public void DefineEndpoints(WebApplication aWebApplication)

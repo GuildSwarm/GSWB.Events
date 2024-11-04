@@ -8,6 +8,7 @@ using Events.Domain.Entities;
 using Events.Domain.Validation;
 using Events.Domain.Validation.Tag;
 using TGF.Common.ROP.HttpResult;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.Events

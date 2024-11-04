@@ -5,6 +5,7 @@ using Events.Application.Mappings;
 using Events.Domain.Entities;
 using TGF.CA.Application.DTOs;
 using TGF.Common.ROP.HttpResult;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.Events

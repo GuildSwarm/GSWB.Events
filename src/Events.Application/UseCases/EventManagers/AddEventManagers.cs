@@ -4,6 +4,7 @@ using Events.Application.Contracts.Repositories;
 using Events.Application.Contracts.UseCases.EventManagers;
 using Events.Domain.Validation;
 using TGF.Common.ROP.HttpResult;
+using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.Common.ROP.Result;
 
 namespace Events.Application.UseCases.EventManagers
