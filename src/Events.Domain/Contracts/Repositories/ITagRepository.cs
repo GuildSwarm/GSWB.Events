@@ -4,7 +4,7 @@ using TGF.CA.Domain.Contracts.Repositories.EntityRepository;
 namespace Events.Domain.Contracts.Repositories
 {
     //Tag is its own aggegrate of one entiity, event template should not reference directly this tag, fix it and create an intermiediate entioy cllaed EventTemplatetag like with EventTag
-    public interface ITagRepository : IEntitiyRepository<Tag, Guid>
+    public interface ITagRepository : IEntityRepository<Tag, Guid>
     {
     }
 }

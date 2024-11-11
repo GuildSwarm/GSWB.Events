@@ -3,6 +3,7 @@ using Events.Domain.Entities;
 using Events.Infrastructure.DataAccess.DbContexts;
 using Microsoft.Extensions.Logging;
 using TGF.CA.Infrastructure.DB.Repository;
+using TGF.CA.Infrastructure.DB.Repository.CQRS.EntityRepository;
 
 namespace Events.Infrastructure.Repositories
 {

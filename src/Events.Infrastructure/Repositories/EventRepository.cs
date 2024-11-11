@@ -4,6 +4,7 @@ using Events.Infrastructure.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TGF.CA.Infrastructure.DB.Repository;
+using TGF.CA.Infrastructure.DB.Repository.CQRS.EntityRepository;
 using TGF.Common.ROP.HttpResult;
 
 namespace Events.Infrastructure.Repositories

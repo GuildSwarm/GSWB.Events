@@ -7,7 +7,7 @@ namespace Events.Application.Contracts.Repositories
     /// <summary>
     /// Provides an interface for repository operations related to the<see cref="Event"/> entity.
     /// </summary>
-    public interface IEventRepository : IEntitiyRepository<Event, Guid>
+    public interface IEventRepository : IEntityRepository<Event, Guid>
     {
 
         /// <summary>
