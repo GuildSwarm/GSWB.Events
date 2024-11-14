@@ -51,17 +51,17 @@ namespace Events.API.Endpoints.Public
         /// <summary>
         /// Adds a list of new managers to the event from a list of memberId
         /// </summary>
-        private async Task<IResult> Post_AddEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<Guid> aMemberIdList, [FromServices] IAddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Post_AddEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<MemberKey> aMemberKeyList, [FromServices] IAddEventManagersService aAddEventManagersService, CancellationToken aCancellationToken = default)
         => await  Result.ContextAccessTokenResult(aHttpContext)
-        .Bind(accessToken => aAddEventManagersService.AddManagers(new EventManagersDTO(id, aMemberIdList), accessToken, aCancellationToken))
+        .Bind(accessToken => aAddEventManagersService.AddManagers(new EventManagersDTO(id, aMemberKeyList), accessToken, aCancellationToken))
         .ToIResult();
 
         /// <summary>
         /// Deletes a list if manages for the event from their memberId
         /// </summary>
-        private async Task<IResult> Delete_DeleteEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<Guid> aMemberIdList, [FromServices] IDeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
+        private async Task<IResult> Delete_DeleteEventManagers(Guid id, HttpContext aHttpContext, [FromBody] IEnumerable<MemberKey> aMemberKeyList, [FromServices] IDeleteEventManagersService aDeleteEventManagersService, CancellationToken aCancellationToken = default)
         => await Result.ContextAccessTokenResult(aHttpContext)
-        .Bind(accessToken => aDeleteEventManagersService.DeleteManagers(id, accessToken, aMemberIdList, aCancellationToken))
+        .Bind(accessToken => aDeleteEventManagersService.DeleteManagers(id, accessToken, aMemberKeyList, aCancellationToken))
         .ToIResult();
 
     }

@@ -1,7 +1,7 @@
-﻿using Events.Domain.Errors;
+﻿using Common.Domain.ValueObjects;
+using Events.Domain.Errors;
 using Events.Domain.Validation;
 using Events.Domain.Validation.Tag;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.HttpResult.RailwaySwitches;
@@ -17,13 +17,13 @@ namespace Events.Domain.Entities
         public virtual ICollection<EventTag> Tags { get; private set; } = [];
 
         #region Managers
-        public async Task<IHttpResult<IEnumerable<EventManager>>> AddManagersAsync(IEnumerable<Guid> aMemberIdList, EventManagerValidator aEventManagerValidator)
+        public async Task<IHttpResult<IEnumerable<EventManager>>> AddManagersAsync(IEnumerable<MemberKey> aMemberKeyList, EventManagerValidator aEventManagerValidator)
         {
             var lResults = new List<EventManager>();
 
-            foreach (var lMemberId in aMemberIdList)
+            foreach (var lMemberKey in aMemberKeyList)
             {
-                var lManager = new EventManager(lMemberId, this) { MemberId = lMemberId, Event = this};
+                var lManager = new EventManager(lMemberKey.GuildId, lMemberKey.UserId, this) { GuildId = lMemberKey.GuildId, UserId = lMemberKey.UserId, Event = this};
                 var lValidationResult = await aEventManagerValidator.ValidateAsync(lManager);
                 if (!lValidationResult.IsValid)
                     return Result.Failure<IEnumerable<EventManager>>(lValidationResult.Errors
@@ -31,7 +31,7 @@ namespace Events.Domain.Entities
                         .ToImmutableArray()
                     );
 
-                if(!this.Managers.Any(manager => manager.MemberId == lMemberId))
+                if(!this.Managers.Any(manager => manager.GuildId == lManager.GuildId && manager.UserId == lManager.UserId))
                     this.Managers.Add(lManager);
 
             }
@@ -39,11 +39,11 @@ namespace Events.Domain.Entities
             return Result.SuccessHttp<IEnumerable<EventManager>>(this.Managers);
         }
 
-        public IHttpResult<IEnumerable<EventManager>> DeleteManagers(IEnumerable<Guid> aMemberIdList)
-        => (Managers.Count == 1 && aMemberIdList.Any(memberId => Managers.Any(manager => manager.MemberId == memberId))
+        public IHttpResult<IEnumerable<EventManager>> DeleteManagers(IEnumerable<MemberKey> aMemberKeyList)
+        => (Managers.Count == 1 && aMemberKeyList.Any(memberKey => Managers.Any(manager => manager.GuildId == memberKey.GuildId && manager.UserId == memberKey.UserId))
             ? Result.Failure<IEnumerable<EventManager>>(DomainErrors.Validation.EventManager.DeletedLastManager) 
             : Result.SuccessHttp(Managers as IEnumerable<EventManager>)
-        ).Map(memberIdList => Managers.Where(manager => aMemberIdList.Contains(manager.MemberId)))
+        ).Map(_ => Managers.Where(manager => aMemberKeyList.Contains( new MemberKey(manager.GuildId, manager.UserId))))
         .Tap(managerList => Managers = Managers.Except(managerList).ToList());
         #endregion
 

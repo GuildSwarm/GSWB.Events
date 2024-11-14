@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TGF.CA.Domain.Primitives;
+﻿using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
 {
@@ -13,18 +8,30 @@ namespace Events.Domain.Entities
         /// Targert event.
         /// </summary>
         public required Event Event { get; set; }
+
+        #region MemberKey
         /// <summary>
         /// Manager of the event.
         /// </summary>
-        public required Guid MemberId { get; set; }
+        /// <remarks>Part of MemberKey</remarks>
+        public required ulong UserId { get; set; }
+
+        /// <summary>
+        /// Guild of the event.
+        /// </summary>
+        /// <remarks>Part of MemberKey</remarks>
+        public required ulong GuildId { get; set; }
+        #endregion
+
         /// <summary>
         /// Logbook of each manager, managers can read all the Logbooks of the event so they can lave their log of the event for next managers in long events.
         /// </summary>
         public string? Logbook { get; set; }
 
-        internal EventManager(Guid MemberId, Event Event, string? aLogbook = default)
+        internal EventManager(ulong GuildId, ulong UserId, Event Event, string? aLogbook = default)
         {
-            this.MemberId = MemberId;
+            this.GuildId = GuildId;
+            this.UserId = UserId;
             this.Event = Event;
             Logbook = aLogbook;
         }

@@ -51,7 +51,7 @@ namespace Events.API.Endpoints.Public
         {
             return await Result.CancellationTokenResult(aCancellationToken)
                 .Validate(aClaimsPrincipal, aTokenClaimsValidator)
-                .Bind(discodMemberId => aCreateEventService.CreateEvent(Guid.Parse(aClaimsPrincipal.FindFirstValue(GuildSwarmClaims.MemberId)!), aCreateEventDto, aCancellationToken))
+                .Bind(discodMemberId => aCreateEventService.CreateEvent(new MemberKey(aClaimsPrincipal.FindFirstValue(GuildSwarmClaims.GuildId)!, aClaimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier)!), aCreateEventDto, aCancellationToken))
                 .ToIResult();
         }
 

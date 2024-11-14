@@ -1,8 +1,8 @@
 ﻿using Common.Application.Contracts.Services;
 using Common.Application.DTOs.Events;
+using Common.Domain.ValueObjects;
 using Events.Application.Contracts.Repositories;
 using Events.Application.Contracts.UseCases.EventManagers;
-using Events.Domain.Entities;
 using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.HttpResult.RailwaySwitches;
 using TGF.Common.ROP.Result;
@@ -21,11 +21,11 @@ namespace Events.Application.UseCases.EventManagers
                 .Map(anEvent => anEvent.Managers);
 
             return await lManagerList
-                .Map(managers => managers.Select(manager => manager.MemberId))
+                .Map(managers => managers.Select(manager => new MemberKey(manager.GuildId, manager.UserId)))
                 .Bind(managerIdList => aMembersCommunicationService.GetMembersByIdList(managerIdList, aAccessToken, aCancellationToken))
                 .Map(memberList => memberList
                     .Select(member => new EventManagerDetailDTO(member, lManagerList.Value
-                        .FirstOrDefault(manager => manager.MemberId == member.Id)?.Logbook))
+                        .FirstOrDefault(manager => manager.GuildId.ToString() == member.GuildId && manager.UserId.ToString() == member.UserId)?.Logbook))
                 );
         }
     }

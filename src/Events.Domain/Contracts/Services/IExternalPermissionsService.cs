@@ -7,6 +7,6 @@ namespace Events.Domain.Contracts.Services
 {
     public interface IExternalPermissionsService
     {
-        Task<IHttpResult<PermissionsEnum>> GetMemberPermissions(Guid aMemberId, CancellationToken aCancellationToken = default);
+        Task<IHttpResult<PermissionsEnum>> GetMemberPermissions(MemberKey memberKey, CancellationToken cancellationToken = default);
     }
 }

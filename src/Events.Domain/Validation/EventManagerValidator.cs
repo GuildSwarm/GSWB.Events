@@ -2,8 +2,8 @@
 using TGF.Common.ROP.Errors;
 using Events.Domain.Errors;
 using Events.Domain.Contracts.Services;
-using TGF.Common.ROP.HttpResult;
 using TGF.Common.ROP.HttpResult.RailwaySwitches;
+using Common.Domain.ValueObjects;
 
 namespace Events.Domain.Validation
 {
@@ -14,10 +14,13 @@ namespace Events.Domain.Validation
         {
             _externalPermissionsService = aExternalPermissionsService;
 
-            RuleFor(manager => manager.MemberId)
+            RuleFor(manager => manager.GuildId)
                 .NotNull();
 
-            RuleFor(manager => manager.MemberId)
+            RuleFor(manager => manager.UserId)
+                .NotNull();
+
+            RuleFor(manager => new MemberKey(manager.GuildId, manager.UserId))
                 .MustAsync(ValidateMemberPermissions)
                 .WithROPError(DomainErrors.Validation.Event.InvalidManager);
 
@@ -25,9 +28,9 @@ namespace Events.Domain.Validation
                 .MaximumLength(InvariantConstants.EventManager_Logbook_MaxLength);
 
         }
-        private async Task<bool> ValidateMemberPermissions(Guid aMemberId, CancellationToken aCancellationToken = default)
+        private async Task<bool> ValidateMemberPermissions(MemberKey aMemberKey, CancellationToken aCancellationToken = default)
         {
-            var lResult = await _externalPermissionsService.GetMemberPermissions(aMemberId, aCancellationToken)
+            var lResult = await _externalPermissionsService.GetMemberPermissions(aMemberKey, aCancellationToken)
                 .Map(permissions => permissions.HasFlag(InvariantConstants.EventManager_ManagerId_RequiredPermissions));
             return lResult.IsSuccess && lResult.Value;
         }

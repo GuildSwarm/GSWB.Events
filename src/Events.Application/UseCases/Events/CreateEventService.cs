@@ -1,5 +1,6 @@
 ﻿using Common.Application.Contracts.Services;
 using Common.Application.DTOs.Events;
+using Common.Domain.ValueObjects;
 using Events.Application.Contracts.Repositories;
 using Events.Application.Contracts.UseCases.Events;
 using Events.Application.DTOs;
@@ -16,16 +17,16 @@ namespace Events.Application.UseCases.Events
     public class CreateEventService(IEventRepository aEventRepository, IMembersCommunicationService aMembersCommunicationService, TagIdListValidator aTagIdListValidator, EventManagerValidator aEventManagerValidator)
         : ICreateEventService
     {
-        public async Task<IHttpResult<EventDTO>> CreateEvent(Guid aMembeIdCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
+        public async Task<IHttpResult<EventDTO>> CreateEvent(MemberKey aMembeKeyCreator, CreateEventDTO aCreateEventDTO, CancellationToken aCancellationToken = default)
         {
             var lMemberCreatorResult = await Result.CancellationTokenResult(aCancellationToken)
-                .Bind( _ => aMembersCommunicationService.GetExistingMember(aMembeIdCreator, aCancellationToken));
+                .Bind( _ => aMembersCommunicationService.GetExistingMember(aMembeKeyCreator, aCancellationToken));
 
             var lNewEventResult = await lMemberCreatorResult
                 .Map(_ => GetNewEventFromEventInformation(aCreateEventDTO.EventInformation));
 
             var lCreateEventResult = await lNewEventResult
-                .Bind(newEvent => newEvent.AddManagersAsync([lMemberCreatorResult.Value.Id], aEventManagerValidator))
+                .Bind(newEvent => newEvent.AddManagersAsync([new MemberKey(lMemberCreatorResult.Value.GuildId, lMemberCreatorResult.Value.UserId)], aEventManagerValidator))
                 .Bind(_ => aEventRepository.AddAsync(lNewEventResult.Value))
                 .Map(newEvent => newEvent.ToDto());
 

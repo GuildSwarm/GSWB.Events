@@ -1,5 +1,6 @@
 ﻿using Common.Application.Contracts.Services;
 using Common.Application.DTOs.Events;
+using Common.Domain.ValueObjects;
 using Events.Application.Contracts.Repositories;
 using Events.Application.Contracts.UseCases.EventManagers;
 using Events.Domain.Validation;
@@ -20,15 +21,15 @@ namespace Events.Application.UseCases.EventManagers
             var lEventResult = await Result.CancellationTokenResult(aCancellationToken)
                 .Bind(_ => aEventRepository.GetWithManagersAsync(aAddEventManagersDTO.EventId));
 
-            var lManagerList = await lEventResult.Bind(anEvent => anEvent.AddManagersAsync(aAddEventManagersDTO.MemberIdList, aEventManagerValidator))
+            var lManagerList = await lEventResult.Bind(anEvent => anEvent.AddManagersAsync(aAddEventManagersDTO.MemberKeyList, aEventManagerValidator))
                 .Bind(_ => aEventRepository.UpdateAsync(lEventResult.Value))
                 .Map(anEvent => anEvent.Managers);
 
-            return await lManagerList.Map(managers => managers.Select(manager => manager.MemberId))
+            return await lManagerList.Map(managers => managers.Select(manager => new MemberKey(manager.GuildId, manager.UserId)))
                 .Bind(managerIdList => aMembersCommunicationService.GetMembersByIdList(managerIdList, aAccessToken, aCancellationToken))
                 .Map(memberList => memberList
                     .Select(member => new EventManagerDetailDTO(member, lManagerList.Value
-                        .FirstOrDefault(manager => manager.MemberId == member.Id)?.Logbook))
+                        .FirstOrDefault(manager => manager.GuildId.ToString() == member.GuildId && manager.UserId.ToString() == member.UserId)?.Logbook))
                 );
         }
     }

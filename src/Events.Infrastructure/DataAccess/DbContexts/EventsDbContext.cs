@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Events.Domain.Entities;
 using TGF.CA.Infrastructure.DB.DbContext;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Events.Infrastructure.DataAccess.DbContexts
 {
@@ -26,6 +27,12 @@ namespace Events.Infrastructure.DataAccess.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Define the ValueConverter to convert ulong to decimal and back
+            var ulongToDecimalConverter = new ValueConverter<ulong, decimal>(
+                v => Convert.ToDecimal(v),    // Convert ulong to decimal for storage
+                v => Convert.ToUInt64(v)      // Convert decimal back to ulong
+            );
+
             modelBuilder.Entity<Event>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -53,7 +60,14 @@ namespace Events.Infrastructure.DataAccess.DbContexts
             modelBuilder.Entity<EventManager>(entity =>
             {
                 entity.HasKey(em => em.Id);
-                entity.Property(em => em.MemberId).IsRequired();
+
+                entity.Property(em => em.GuildId).IsRequired()
+                .HasColumnType("numeric(20,0)")           // Store as numeric in PostgreSQL
+                .HasConversion(ulongToDecimalConverter);  // Use the ValueConverter;
+                entity.Property(em => em.UserId).IsRequired()
+                .HasColumnType("numeric(20,0)")           // Store as numeric in PostgreSQL
+                .HasConversion(ulongToDecimalConverter);  // Use the ValueConverter;
+
                 entity.Property(em => em.Logbook).HasMaxLength(1000);
             });
 
