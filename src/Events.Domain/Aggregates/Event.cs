@@ -23,7 +23,7 @@ namespace Events.Domain.Entities
 
             foreach (var lMemberKey in aMemberKeyList)
             {
-                var lManager = new EventManager(lMemberKey.GuildId, lMemberKey.UserId, this) { GuildId = lMemberKey.GuildId, UserId = lMemberKey.UserId, Event = this};
+                var lManager = new EventManager(lMemberKey, this) { MemberId = lMemberKey, Event = this};
                 var lValidationResult = await aEventManagerValidator.ValidateAsync(lManager);
                 if (!lValidationResult.IsValid)
                     return Result.Failure<IEnumerable<EventManager>>(lValidationResult.Errors
@@ -31,7 +31,7 @@ namespace Events.Domain.Entities
                         .ToImmutableArray()
                     );
 
-                if(!this.Managers.Any(manager => manager.GuildId == lManager.GuildId && manager.UserId == lManager.UserId))
+                if(!this.Managers.Any(manager => manager.MemberId == lManager.MemberId))
                     this.Managers.Add(lManager);
 
             }
@@ -40,10 +40,10 @@ namespace Events.Domain.Entities
         }
 
         public IHttpResult<IEnumerable<EventManager>> DeleteManagers(IEnumerable<MemberKey> aMemberKeyList)
-        => (Managers.Count == 1 && aMemberKeyList.Any(memberKey => Managers.Any(manager => manager.GuildId == memberKey.GuildId && manager.UserId == memberKey.UserId))
+        => (Managers.Count == 1 && aMemberKeyList.Any(memberKey => Managers.Any(manager => manager.MemberId == memberKey))
             ? Result.Failure<IEnumerable<EventManager>>(DomainErrors.Validation.EventManager.DeletedLastManager) 
             : Result.SuccessHttp(Managers as IEnumerable<EventManager>)
-        ).Map(_ => Managers.Where(manager => aMemberKeyList.Contains( new MemberKey(manager.GuildId, manager.UserId))))
+        ).Map(_ => Managers.Where(manager => aMemberKeyList.Contains(manager.MemberId)))
         .Tap(managerList => Managers = Managers.Except(managerList).ToList());
         #endregion
 

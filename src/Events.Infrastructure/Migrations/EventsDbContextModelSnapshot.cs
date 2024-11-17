@@ -17,7 +17,7 @@ namespace Events.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -147,9 +147,6 @@ namespace Events.Infrastructure.Migrations
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
@@ -381,9 +378,6 @@ namespace Events.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTimeOffset>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -415,9 +409,6 @@ namespace Events.Infrastructure.Migrations
 
                     b.Property<string>("ManagerNotes")
                         .HasColumnType("text");
-
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTimeOffset>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
@@ -761,7 +752,29 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("ActivityParticipationId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("ActivityParticipationId");
+
+                            b1.ToTable("ActivityParticipations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ActivityParticipationId");
+                        });
+
                     b.Navigation("Activity");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.ActivityTemplate", b =>
@@ -838,7 +851,29 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("EventManagerId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("EventManagerId");
+
+                            b1.ToTable("EventManagemers");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EventManagerId");
+                        });
+
                     b.Navigation("Event");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventParticipation", b =>
@@ -853,9 +888,31 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("EventParticipationId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("EventParticipationId");
+
+                            b1.ToTable("EventParticipations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EventParticipationId");
+                        });
+
                     b.Navigation("Channel");
 
                     b.Navigation("Event");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventParticipationRequirement", b =>

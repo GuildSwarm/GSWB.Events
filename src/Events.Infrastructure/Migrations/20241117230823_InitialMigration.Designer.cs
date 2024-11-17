@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Events.Infrastructure.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    [Migration("20240616104118_Initial migration")]
-    partial class Initialmigration
+    [Migration("20241117230823_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -121,8 +121,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -142,8 +148,11 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("ActivityId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Notes")
                         .HasColumnType("text");
@@ -164,11 +173,17 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<Guid?>("EventTemplateId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -187,8 +202,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<decimal>("DiscordChannelId")
                         .HasColumnType("numeric(20,0)");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -213,8 +234,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<decimal>("DiscordChannelId")
                         .HasColumnType("numeric(20,0)");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -240,6 +267,12 @@ namespace Events.Infrastructure.Migrations
 
                     b.Property<float>("Amount")
                         .HasColumnType("real");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Reason")
                         .HasColumnType("text");
@@ -271,6 +304,9 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
@@ -288,6 +324,9 @@ namespace Events.Infrastructure.Migrations
                         .HasColumnType("interval");
 
                     b.Property<DateTimeOffset>("LaunchDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
@@ -314,8 +353,14 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("ActivityId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("EventId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -329,12 +374,15 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Logbook")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -350,6 +398,9 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid?>("ChannelId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("Duration")
                         .HasColumnType("integer");
 
@@ -362,8 +413,8 @@ namespace Events.Infrastructure.Migrations
                     b.Property<string>("ManagerNotes")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("MemberId")
-                        .HasColumnType("uuid");
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ParticipantNotes")
                         .HasColumnType("text");
@@ -382,6 +433,12 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("ParticipationRequirementId")
                         .HasColumnType("uuid");
 
@@ -396,8 +453,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -417,8 +480,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -438,8 +507,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Descriptions")
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -455,6 +530,12 @@ namespace Events.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("TagId")
                         .HasColumnType("uuid");
 
@@ -469,6 +550,9 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -477,6 +561,9 @@ namespace Events.Infrastructure.Migrations
 
                     b.Property<TimeSpan>("ExpectedDuration")
                         .HasColumnType("interval");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -498,8 +585,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<bool>("IsGameHandleVerificationRequired")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("RequiredLicenseId")
                         .HasColumnType("uuid");
@@ -521,6 +614,12 @@ namespace Events.Infrastructure.Migrations
                     b.Property<float>("Amount")
                         .HasColumnType("real");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("ParticipationId")
                         .HasColumnType("uuid");
 
@@ -540,8 +639,14 @@ namespace Events.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -650,7 +755,29 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("ActivityParticipationId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("ActivityParticipationId");
+
+                            b1.ToTable("ActivityParticipations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ActivityParticipationId");
+                        });
+
                     b.Navigation("Activity");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.ActivityTemplate", b =>
@@ -727,7 +854,29 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("EventManagerId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("EventManagerId");
+
+                            b1.ToTable("EventManagemers");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EventManagerId");
+                        });
+
                     b.Navigation("Event");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventParticipation", b =>
@@ -742,9 +891,31 @@ namespace Events.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("Common.Domain.ValueObjects.MemberKey", "MemberId", b1 =>
+                        {
+                            b1.Property<Guid>("EventParticipationId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<decimal>("GuildId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.Property<decimal>("UserId")
+                                .HasColumnType("numeric(20,0)");
+
+                            b1.HasKey("EventParticipationId");
+
+                            b1.ToTable("EventParticipations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EventParticipationId");
+                        });
+
                     b.Navigation("Channel");
 
                     b.Navigation("Event");
+
+                    b.Navigation("MemberId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Events.Domain.Entities.EventParticipationRequirement", b =>

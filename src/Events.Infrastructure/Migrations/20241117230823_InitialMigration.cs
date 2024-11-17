@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Events.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,9 @@ namespace Events.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +34,9 @@ namespace Events.Infrastructure.Migrations
                     ParentId = table.Column<Guid>(type: "uuid", nullable: true),
                     DiscordChannelId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Type = table.Column<int>(type: "integer", nullable: false)
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,7 +56,9 @@ namespace Events.Infrastructure.Migrations
                     ParentId = table.Column<Guid>(type: "uuid", nullable: true),
                     DiscordChannelId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
-                    Type = table.Column<int>(type: "integer", nullable: false)
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,7 +77,9 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Slots = table.Column<int>(type: "integer", nullable: false)
+                    Slots = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,7 +93,9 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    RequiredCount = table.Column<int>(type: "integer", nullable: true)
+                    RequiredCount = table.Column<int>(type: "integer", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,7 +108,9 @@ namespace Events.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Descriptions = table.Column<string>(type: "text", nullable: true)
+                    Descriptions = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,7 +123,9 @@ namespace Events.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,7 +139,9 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     RequiredRoleId = table.Column<Guid>(type: "uuid", nullable: true),
                     RequiredLicenseId = table.Column<Guid>(type: "uuid", nullable: true),
-                    IsGameHandleVerificationRequired = table.Column<bool>(type: "boolean", nullable: false)
+                    IsGameHandleVerificationRequired = table.Column<bool>(type: "boolean", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,7 +156,10 @@ namespace Events.Infrastructure.Migrations
                     PaymentRatio = table.Column<float>(type: "real", nullable: false),
                     Notes = table.Column<string>(type: "text", nullable: true),
                     ActivityId = table.Column<Guid>(type: "uuid", nullable: false),
-                    MemberId = table.Column<Guid>(type: "uuid", nullable: false)
+                    MemberId_GuildId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    MemberId_UserId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,7 +184,9 @@ namespace Events.Infrastructure.Migrations
                     ExpectedDuration = table.Column<TimeSpan>(type: "interval", nullable: false),
                     StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     LaunchDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    EndDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    EndDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,7 +207,9 @@ namespace Events.Infrastructure.Migrations
                     Description = table.Column<string>(type: "text", nullable: true),
                     ExpectedDuration = table.Column<TimeSpan>(type: "interval", nullable: false),
                     StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    DiscordTemplateId = table.Column<Guid>(type: "uuid", nullable: true)
+                    DiscordTemplateId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,7 +303,9 @@ namespace Events.Infrastructure.Migrations
                     SenderId = table.Column<Guid>(type: "uuid", nullable: false),
                     ReceiverId = table.Column<Guid>(type: "uuid", nullable: false),
                     SentAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    ReceivedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
+                    ReceivedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -306,7 +331,9 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Amount = table.Column<float>(type: "real", nullable: false),
                     Reason = table.Column<string>(type: "text", nullable: true),
-                    ParticipationId = table.Column<Guid>(type: "uuid", nullable: false)
+                    ParticipationId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -325,7 +352,9 @@ namespace Events.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     EventId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ActivityId = table.Column<Guid>(type: "uuid", nullable: false)
+                    ActivityId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -343,8 +372,11 @@ namespace Events.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    MemberId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Logbook = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true)
+                    MemberId_GuildId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    MemberId_UserId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    Logbook = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -362,7 +394,9 @@ namespace Events.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ParticipationRequirementId = table.Column<Guid>(type: "uuid", nullable: false)
+                    ParticipationRequirementId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -382,11 +416,14 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     EventId = table.Column<Guid>(type: "uuid", nullable: false),
                     EventRoleId = table.Column<Guid>(type: "uuid", nullable: false),
-                    MemberId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MemberId_GuildId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
+                    MemberId_UserId = table.Column<decimal>(type: "numeric(20,0)", nullable: false),
                     Duration = table.Column<int>(type: "integer", nullable: false),
                     ParticipantNotes = table.Column<string>(type: "text", nullable: true),
                     ManagerNotes = table.Column<string>(type: "text", nullable: true),
-                    ChannelId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ChannelId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -409,7 +446,9 @@ namespace Events.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TagId = table.Column<Guid>(type: "uuid", nullable: false)
+                    TagId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -429,7 +468,9 @@ namespace Events.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    EventTemplateId = table.Column<Guid>(type: "uuid", nullable: true)
+                    EventTemplateId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    ModifiedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

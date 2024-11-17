@@ -25,11 +25,11 @@ namespace Events.Application.UseCases.EventManagers
                 .Bind(_ => aEventRepository.UpdateAsync(lEventResult.Value))
                 .Map(anEvent => anEvent.Managers);
 
-            return await lManagerList.Map(managers => managers.Select(manager => new MemberKey(manager.GuildId, manager.UserId)))
+            return await lManagerList.Map(managers => managers.Select(manager => manager.MemberId))
                 .Bind(managerIdList => aMembersCommunicationService.GetMembersByIdList(managerIdList, aAccessToken, aCancellationToken))
                 .Map(memberList => memberList
                     .Select(member => new EventManagerDetailDTO(member, lManagerList.Value
-                        .FirstOrDefault(manager => manager.GuildId.ToString() == member.GuildId && manager.UserId.ToString() == member.UserId)?.Logbook))
+                        .FirstOrDefault(manager => manager.MemberId.GuildId.ToString() == member.GuildId && manager.MemberId.UserId.ToString() == member.UserId)?.Logbook))
                 );
         }
     }

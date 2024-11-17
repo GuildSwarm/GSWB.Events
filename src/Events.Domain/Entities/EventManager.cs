@@ -1,4 +1,5 @@
-﻿using TGF.CA.Domain.Primitives;
+﻿using Common.Domain.ValueObjects;
+using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
 {
@@ -9,30 +10,20 @@ namespace Events.Domain.Entities
         /// </summary>
         public required Event Event { get; set; }
 
-        #region MemberKey
         /// <summary>
-        /// Manager of the event.
+        /// The Member id who manages the event.
         /// </summary>
-        /// <remarks>Part of MemberKey</remarks>
-        public required ulong UserId { get; set; }
-
-        /// <summary>
-        /// Guild of the event.
-        /// </summary>
-        /// <remarks>Part of MemberKey</remarks>
-        public required ulong GuildId { get; set; }
-        #endregion
+        public required MemberKey MemberId { get; init; }
 
         /// <summary>
         /// Logbook of each manager, managers can read all the Logbooks of the event so they can lave their log of the event for next managers in long events.
         /// </summary>
         public string? Logbook { get; set; }
 
-        internal EventManager(ulong GuildId, ulong UserId, Event Event, string? aLogbook = default)
+        internal EventManager(MemberKey memberId, Event @event, string? aLogbook = default)
         {
-            this.GuildId = GuildId;
-            this.UserId = UserId;
-            this.Event = Event;
+            this.MemberId = memberId;
+            this.Event = @event;
             Logbook = aLogbook;
         }
         internal EventManager()

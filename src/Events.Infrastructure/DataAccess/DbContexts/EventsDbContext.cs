@@ -61,12 +61,17 @@ namespace Events.Infrastructure.DataAccess.DbContexts
             {
                 entity.HasKey(em => em.Id);
 
-                entity.Property(em => em.GuildId).IsRequired()
-                .HasColumnType("numeric(20,0)")           // Store as numeric in PostgreSQL
-                .HasConversion(ulongToDecimalConverter);  // Use the ValueConverter;
-                entity.Property(em => em.UserId).IsRequired()
-                .HasColumnType("numeric(20,0)")           // Store as numeric in PostgreSQL
-                .HasConversion(ulongToDecimalConverter);  // Use the ValueConverter;
+                // Configure MemberKey as an owned type, mapping its properties to columns in the table
+                entity.OwnsOne(e => e.MemberId, key =>
+                {
+                    key.Property(k => k.GuildId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+
+                    key.Property(k => k.UserId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+                });
 
                 entity.Property(em => em.Logbook).HasMaxLength(1000);
             });
@@ -75,6 +80,40 @@ namespace Events.Infrastructure.DataAccess.DbContexts
             {
                 entity.HasKey(et => et.Id);
                 entity.Property(et => et.TagId).IsRequired();
+            });
+
+            modelBuilder.Entity<ActivityParticipation>(entity =>
+            {
+                entity.HasKey(em => em.Id);
+
+                // Configure MemberKey as an owned type, mapping its properties to columns in the table
+                entity.OwnsOne(e => e.MemberId, key =>
+                {
+                    key.Property(k => k.GuildId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+
+                    key.Property(k => k.UserId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+                });
+            });
+
+            modelBuilder.Entity<EventParticipation>(entity =>
+            {
+                entity.HasKey(em => em.Id);
+
+                // Configure MemberKey as an owned type, mapping its properties to columns in the table
+                entity.OwnsOne(e => e.MemberId, key =>
+                {
+                    key.Property(k => k.GuildId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+
+                    key.Property(k => k.UserId)
+                        .HasColumnType("numeric(20,0)")
+                        .HasConversion(ulongToDecimalConverter);  // Convert ulong to decimal
+                });
             });
 
             modelBuilder.Entity<EventParticipationRequirement>(entity =>

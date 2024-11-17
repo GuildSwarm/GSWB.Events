@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Domain.ValueObjects;
 using TGF.CA.Domain.Primitives;
 
 namespace Events.Domain.Entities
@@ -16,6 +12,6 @@ namespace Events.Domain.Entities
         public float PaymentRatio { get; set; }
         public string? Notes { get; set; }
         public required Activity Activity { get; set; }
-        public required Guid MemberId { get; set; }
+        public required MemberKey MemberId { get; set; }
     }
 }

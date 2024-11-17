@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Events.Domain.Entities
     {
         public required Event Event { get; set; }
         public required Guid EventRoleId { get; set; }
-        public required Guid MemberId { get; set; }
+        public required MemberKey MemberId { get; set; }
         public int Duration { get; set; }
         public string? ParticipantNotes { get; set; }
         public string? ManagerNotes { get; set; }

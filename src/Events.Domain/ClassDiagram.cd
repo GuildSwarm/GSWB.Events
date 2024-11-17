@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Events.Domain.Entities.ActivityParticipation">
-    <Position X="30.75" Y="32.25" Width="1.75" />
+    <Position X="30.5" Y="32.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAEAAAAA=</HashCode>
       <FileName>Entities\ActivityParticipation.cs</FileName>
@@ -104,6 +104,14 @@
         <Point X="30" Y="25.875" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventParticipationRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27.125" Y="22.25" />
+        <Point X="27.125" Y="21.875" />
+        <Point X="27.125" Y="21.875" />
+        <Point X="27.125" Y="18.742" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="Managers" Type="Events.Domain.Entities.EventManager" FixedFromPoint="true">
       <Path>
         <Point X="27.062" Y="24.896" />
@@ -119,25 +127,17 @@
         <Point X="23.25" Y="23" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="Requirements" Type="Events.Domain.Entities.EventParticipationRequirement" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="27.125" Y="22.25" />
-        <Point X="27.125" Y="21.875" />
-        <Point X="27.125" Y="21.875" />
-        <Point X="27.125" Y="18.742" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ABAAAAAAACBwAADAAAAgAAQwgAIAAFAAAAAAAEAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIABwAACAAAAgAAQwgAIAAFAIAAAAAEAAAAA=</HashCode>
       <FileName>Aggregates\Event.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="DiscordTemplate" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
+      <Property Name="Requirements" />
       <Property Name="Managers" />
       <Property Name="Tags" />
-      <Property Name="Requirements" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Events.Domain.Entities.EventActivity">

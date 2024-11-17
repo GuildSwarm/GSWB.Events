@@ -14,13 +14,16 @@ namespace Events.Domain.Validation
         {
             _externalPermissionsService = aExternalPermissionsService;
 
-            RuleFor(manager => manager.GuildId)
+            RuleFor(manager => manager.MemberId)
                 .NotNull();
 
-            RuleFor(manager => manager.UserId)
+            RuleFor(manager => manager.MemberId.UserId)
                 .NotNull();
 
-            RuleFor(manager => new MemberKey(manager.GuildId, manager.UserId))
+            RuleFor(manager => manager.MemberId.GuildId)
+            .NotNull();
+
+            RuleFor(manager => manager.MemberId)
                 .MustAsync(ValidateMemberPermissions)
                 .WithROPError(DomainErrors.Validation.Event.InvalidManager);
 
